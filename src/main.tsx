@@ -9,5 +9,8 @@ import { GlobalStyle } from './styles/global'
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Fragment>
     <GlobalStyle />
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
   </Fragment>
 )
