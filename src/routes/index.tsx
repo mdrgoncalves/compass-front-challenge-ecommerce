@@ -5,15 +5,19 @@ import { Category } from '../pages/Category';
 import { Product } from '../pages/Product';
 import { HeaderDesktop } from '../components/Desktop/HeaderDesktop';
 
+import ViewportProvider from '../context/viewportContext';
+
 export const Routes: React.FC = () => {
     return (
         <>
+        <ViewportProvider>
             <HeaderDesktop />
             <Switch>
                 <Route element={<Home />} path="/" />
                 <Route element={<Category />} path="/category" />
                 <Route element={<Product />} path="/product" />
             </Switch>
+        </ViewportProvider>
         </>
     )
 }
