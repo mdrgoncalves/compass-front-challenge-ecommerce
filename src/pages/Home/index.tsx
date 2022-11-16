@@ -1,6 +1,7 @@
 import { HeaderMobile } from "../../components/Mobile/HeaderMobile";
 import { StatusBanner } from "../../components/Desktop/StatusBanner";
 import { PromoBanner } from "../../components/PromoBanner";
+import { ArrivalsSection } from "../../ArrivalsSection";
 
 export const Home: React.FC = () => {
     return (
@@ -8,6 +9,7 @@ export const Home: React.FC = () => {
             <HeaderMobile />
             <StatusBanner />
             <PromoBanner />
+            <ArrivalsSection />
         </>
     )
 };
