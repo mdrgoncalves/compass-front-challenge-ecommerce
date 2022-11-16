@@ -4,7 +4,6 @@ export const CarouselContainer = styled.div`
 
     position: relative;
     overflow: hidden;
-    padding-left: 1rem;
     margin: 8px 0 25px 0;
 `;
 
