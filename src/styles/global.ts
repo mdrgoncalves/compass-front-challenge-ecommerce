@@ -2,17 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    html {
-        font-family: 'Inter', sans-serif;
-
+    :root {
         // Colors
         --color-primary: #1b4b66;
         --color-primary-tint: #639599;
@@ -25,5 +15,27 @@ export const GlobalStyle = createGlobalStyle`
         --color-light-text: #b6b6b6;
         --color-high-emphasis: #171520;
         --color-low-emphasis: #626262;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+        text-decoration: none;
+    }
+
+    html {
+        font-family: 'Inter', sans-serif;
+        color: var(--color-high-emphasis);
+    }
+
+    body {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    button {
+        cursor: pointer;
     }
 `;
