@@ -16,6 +16,7 @@ export const Routes: React.FC = () => {
                 <Route element={<Home />} path="/" />
                 <Route element={<Category />} path="/category" />
                 <Route element={<Product />} path="/product" />
+                <Route element={<Product />} path="/product/:productId" />
             </Switch>
         </ViewportProvider>
         </>
