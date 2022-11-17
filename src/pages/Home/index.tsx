@@ -4,6 +4,7 @@ import { PromoBanner } from "../../components/PromoBanner";
 import { ArrivalsSection } from "../../components/ArrivalsSection";
 import { TopCategories } from "../../components/Mobile/TopCategories";
 import { HandpickedCollections } from "../../components/HandpickedCollections";
+import { BrandsSection } from "../../components/BrandsSection";
 
 export const Home: React.FC = () => {
     return (
@@ -14,6 +15,7 @@ export const Home: React.FC = () => {
             <TopCategories />
             <ArrivalsSection />
             <HandpickedCollections />
+            <BrandsSection />
         </>
     )
 };
