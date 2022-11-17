@@ -1,11 +1,11 @@
-import productsData from "../data/productsData"
+import productsData from "../../data/productsData";
 
 import { Link } from "react-router-dom"
 
-import { ProductCard } from "../components/ProductCard"
-import { Carousel } from "../components/Carousel"
-import { ArrivalsContainer, ArrivalsContent } from "./style"
-import { useWidth } from "../utils/useWidth"
+import { ProductCard } from "../ProductCard";
+import { Carousel } from "../Carousel";
+import { ArrivalsContainer, ArrivalsContent } from "./style";
+import { useWidth } from "../../utils/useWidth";
 
 export const ArrivalsSection = () => {
 
