@@ -1,14 +1,17 @@
 import { HeadingTag } from "./styles";
 
 interface HeadingProps {
-    screenType: 'mobile' | 'desktop';
+    invertColor?: boolean;
     children: string;
 }
 
-export const Heading: React.FC<HeadingProps> = ({ screenType, children }) => {
+export const Heading: React.FC<HeadingProps> = ({ 
+    invertColor = false, 
+    children 
+}) => {
 
     return (
-        <HeadingTag color={screenType} className={screenType}>
+        <HeadingTag color={invertColor.toString()}>
             {children}
         </HeadingTag>
     );  

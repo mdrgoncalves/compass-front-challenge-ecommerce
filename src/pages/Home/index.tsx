@@ -3,6 +3,7 @@ import { StatusBanner } from "../../components/Desktop/StatusBanner";
 import { PromoBanner } from "../../components/PromoBanner";
 import { ArrivalsSection } from "../../components/ArrivalsSection";
 import { TopCategories } from "../../components/Mobile/TopCategories";
+import { HandpickedCollections } from "../../components/HandpickedCollections";
 
 export const Home: React.FC = () => {
     return (
@@ -12,6 +13,7 @@ export const Home: React.FC = () => {
             <PromoBanner />
             <TopCategories />
             <ArrivalsSection />
+            <HandpickedCollections />
         </>
     )
 };
