@@ -5,6 +5,7 @@ import { ArrivalsSection } from "../../components/ArrivalsSection";
 import { TopCategories } from "../../components/Mobile/TopCategories";
 import { HandpickedCollections } from "../../components/HandpickedCollections";
 import { BrandsSection } from "../../components/BrandsSection";
+import { CallToApp } from "../../components/Mobile/CallToApp";
 
 export const Home: React.FC = () => {
     return (
@@ -16,6 +17,7 @@ export const Home: React.FC = () => {
             <ArrivalsSection />
             <HandpickedCollections />
             <BrandsSection />
+            <CallToApp />
         </>
     )
 };
