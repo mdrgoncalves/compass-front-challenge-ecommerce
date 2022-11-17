@@ -1,9 +1,10 @@
+import { ReactNode } from 'react';
 import { useWidthDimension } from '../context/viewportContext';
 
 interface UseWidthProps {
     breakpoint?: number;
-    renderMobile: () => JSX.Element;
-    renderDesktop: () => JSX.Element;
+    renderMobile: () => ReactNode;
+    renderDesktop: () => ReactNode;
 }
 
 export const useWidth = ({
