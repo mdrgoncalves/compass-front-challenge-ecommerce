@@ -14,19 +14,19 @@ export const HeaderDesktop: React.FC = () => {
                 <nav>
                     <ListContainer>
                         <li>
-                            <NavLink to='product'>Handbags</NavLink>
+                            <NavLink to='/category/handbags'>Handbags</NavLink>
                         </li>
                         <li>
-                            <NavLink to='product'>Watches</NavLink>
+                            <NavLink to='/category/watches'>Watches</NavLink>
                         </li>
                         <li>
-                            <NavLink to='product'>Skincare</NavLink>
+                            <NavLink to='/category/skincare'>Skincare</NavLink>
                         </li>
                         <li>
-                            <NavLink to='product'>Jewellery</NavLink>
+                            <NavLink to='/category/jewellery'>Jewellery</NavLink>
                         </li>
                         <li>
-                            <NavLink to='product'>Apparels</NavLink>
+                            <NavLink to='/category/apparels'>Apparels</NavLink>
                         </li>
                     </ListContainer>
                 </nav>

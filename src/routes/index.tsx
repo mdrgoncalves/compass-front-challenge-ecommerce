@@ -14,8 +14,7 @@ export const Routes: React.FC = () => {
             <HeaderDesktop />
             <Switch>
                 <Route element={<Home />} path="/" />
-                <Route element={<Product />} path="/product" />
-                <Route element={<Category />} path="/:category" />
+                <Route element={<Category />} path="/category/:category" />
                 <Route element={<Product />} path="/product/:productId" />
             </Switch>
             <FooterDesktop />
