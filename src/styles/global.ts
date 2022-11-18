@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
         text-decoration: none;
     }
 
-    html {
+    html, button {
         font-family: 'Inter', sans-serif;
         color: var(--color-high-emphasis);
     }
