@@ -1,17 +1,24 @@
 import { CategoryFilter } from "../../components/Desktop/CategoryFilter";
+import { ProductListing } from "../../components/ProductListing";
 import { PromoImageDesktop } from "../../components/PromoBanner/styles";
+import { CategoryContainer } from "./styles";
 
 export const Category: React.FC = () => {
     
     return (
-        <>
-            <div>
+        <CategoryContainer>
+            <div className='category__banner'>
                 <PromoImageDesktop 
                     src='/assets/img/icons/black-friday-hero.png' 
                     alt='black friday banner' 
                 />
             </div>
-            <CategoryFilter />
-        </>
+            <aside className='category__filter'>
+                <CategoryFilter />
+            </aside>
+            <section className='category__products'>
+                <ProductListing />
+            </section>
+        </CategoryContainer>
     )
 };
