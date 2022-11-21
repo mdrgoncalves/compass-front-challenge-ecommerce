@@ -24,6 +24,10 @@ export const CategoryContainer = styled.div`
         grid-area: page-params;
         padding-left: 20px;
         margin-bottom: 42px;
+
+        @media (max-width: 985px) {
+            display: none;
+        }
     }
     
     .category__filter {

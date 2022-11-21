@@ -1,3 +1,4 @@
+import { CategoryHeader } from "../../components/Desktop/CategoryDesktopHeader";
 import { CategoryFilter } from "../../components/Desktop/CategoryFilter";
 import { ProductListing } from "../../components/ProductListing";
 import { PromoImageDesktop } from "../../components/PromoBanner/styles";
@@ -12,6 +13,9 @@ export const Category: React.FC = () => {
                     src='/assets/img/icons/black-friday-hero.png' 
                     alt='black friday banner' 
                 />
+            </div>
+            <div className='category__header'>
+                <CategoryHeader />  
             </div>
             <aside className='category__filter'>
                 <CategoryFilter />
