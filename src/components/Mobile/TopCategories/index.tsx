@@ -14,7 +14,7 @@ export const TopCategories: React.FC = () => {
         {useWidth({
             renderMobile: () => (
                 <CategoriesSection>
-                    <Heading screenType="mobile">
+                    <Heading>
                         Top Categories
                     </Heading>
                     <Carousel>

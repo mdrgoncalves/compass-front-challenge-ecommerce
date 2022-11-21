@@ -9,7 +9,7 @@ export const CategoryIcon: React.FC<CategoryLinkProps> = ({
 }) => {
 
     return (
-        <CategoryLink to={`/${category}`}>
+        <CategoryLink to={`/category/${category}`}>
             <img src={`/assets/img/icons/${category}-icon.svg`} alt={`${category} icon`} />
             <h3>{category}</h3>
         </CategoryLink>
