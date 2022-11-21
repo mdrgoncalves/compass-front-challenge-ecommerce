@@ -12,19 +12,3 @@ export const CategoryHeaderContainer = styled.div`
         color: var(--color-primary);
     }
 `;
-
-export const PathCategory = styled.h2`
-
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    ${font.bodyMedium};
-
-    .category-previous {
-        color: var(--color-primary);
-    }
-
-    .category-current {
-        color: var(--color-low-emphasis);
-    }
-`;
