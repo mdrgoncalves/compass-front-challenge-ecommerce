@@ -13,6 +13,7 @@ export const ArrivalsSection = () => {
         return (
             <ProductCard 
                 key={product.id}
+                category={product.category}
                 imgSrc={product.img}
                 id={product.id}
                 title={product.name}

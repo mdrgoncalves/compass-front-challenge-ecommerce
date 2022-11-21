@@ -55,6 +55,8 @@ export const ProductListing: React.FC = () => {
                     {productsList.map(product => (
                         <ProductItem
                             key={product.id}
+                            category={product.category}
+                            id={product.id}
                             imgSrc={product.img}
                             title={product.name}
                             desc={product.description}
@@ -75,6 +77,8 @@ export const ProductListing: React.FC = () => {
                     <ProductsGrid>
                         {currentProducts.map(product => (
                             <ProductItem
+                                category={product.category}
+                                id={product.id}
                                 key={product.id}
                                 imgSrc={product.img}
                                 title={product.name}

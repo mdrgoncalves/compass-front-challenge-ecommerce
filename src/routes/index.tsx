@@ -15,7 +15,7 @@ export const Routes: React.FC = () => {
             <Switch>
                 <Route element={<Home />} path="/" />
                 <Route element={<Category />} path="/category/:category" />
-                <Route element={<Product />} path="/product/:productId" />
+                <Route element={<Product />} path="/category/:category/:productId" />
             </Switch>
             <FooterDesktop />
         </ViewportProvider>

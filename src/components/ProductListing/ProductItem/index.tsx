@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { 
     ProductContainer, 
     ProductImg, 
@@ -11,6 +12,8 @@ import {
 } from "./styles";
 
 interface ProductItemProps {
+    category: string;
+    id: number;
     imgSrc: string;
     title: string;
     desc: string;
@@ -18,6 +21,8 @@ interface ProductItemProps {
 }
 
 export const ProductItem: React.FC<ProductItemProps> = ({
+    category,
+    id,
     imgSrc,
     title,
     desc,
@@ -26,9 +31,9 @@ export const ProductItem: React.FC<ProductItemProps> = ({
 
     return (
         <ProductContainer>
-            <picture>
+            <Link to={`/category/${category}/${id}`}>
                 <ProductImg src={imgSrc} alt={`${title} image`} />
-            </picture>
+            </Link>
             <ProductContent>
                 <ProductTextContainer>
                     <ProductTitle>{title}</ProductTitle>
