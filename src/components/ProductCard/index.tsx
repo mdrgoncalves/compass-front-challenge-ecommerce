@@ -43,7 +43,7 @@ export const ProductCard = ({
                     <ProductDesc>{desc}</ProductDesc>
                     <ProductPrice>{price}</ProductPrice>
                 </ProductText>
-                <IconButton iconSrc='assets/img/wishlist-icon.svg' alt='favorite product'/>
+                <IconButton iconSrc='/assets/img/wishlist-icon.svg' alt='favorite product'/>
             </ProductContent>
         </ProductContainer>
     )
