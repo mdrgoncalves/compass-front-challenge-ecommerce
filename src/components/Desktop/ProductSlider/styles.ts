@@ -4,20 +4,25 @@ export const SliderContainer = styled.div`
 
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 985px) {
+        display: none;
+    }
 `;
 
 export const BigImage = styled.img`
 
-    width: 47.265%;
-    height: 47.265%;
+    width: 94.5%;
 `;
 
 export const ThumbsContainer = styled.div`
 
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 31px;
-    margin: 24px 0 0 5.16%;
+    margin: 24px 0 0 0;
+    width: 95%;
 
     button {
         background-color: transparent;
@@ -29,7 +34,7 @@ export const ThumbsContainer = styled.div`
 
 export const Thumbnail = styled.img`
 
-    width: 5.86%;
-    height: 5.86%;
+    width: 12.36%;
+    height: 12.36%;
     border-radius: 8px;
 `;

@@ -1,27 +1,10 @@
-import productsData from "../../data/productsData";
-
 import { Link } from "react-router-dom"
 
-import { ProductCard } from "../ProductCard";
-import { Carousel } from "../Carousel";
 import { ArrivalsContainer, ArrivalsContent } from "./style";
 import { useWidth } from "../../utils/useWidth";
+import { ProductsCarousel } from "../ProductsCarousel";
 
 export const ArrivalsSection = () => {
-
-    const products = productsData.map(product => {
-        return (
-            <ProductCard 
-                key={product.id}
-                category={product.category}
-                imgSrc={product.img}
-                id={product.id}
-                title={product.name}
-                desc={product.description}
-                price={product.price}
-            />
-        )
-    })
     
     return (
         <ArrivalsContainer>
@@ -39,9 +22,7 @@ export const ArrivalsSection = () => {
                     })}
                 </Link>
             </ArrivalsContent>
-            <Carousel>
-                {products}
-            </Carousel>
+            <ProductsCarousel />
         </ArrivalsContainer>
     )
 }

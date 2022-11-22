@@ -22,4 +22,8 @@ export const PathContainer = styled.h2`
         gap: 0.5rem;
         color: var(--color-low-emphasis);
     }
+
+    @media (max-width: 985px) {
+        display: none;
+    }
 `;
