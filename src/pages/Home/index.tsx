@@ -13,9 +13,10 @@ import { HomeContainer } from "./styles";
 
 export const Home: React.FC = () => {
     return (
-        <HomeContainer>
+        <>
             <HeaderMobile />
             <StatusBanner />
+        <HomeContainer>
             <MobileNav />
             <PromoBanner />
             <TopCategories />
@@ -26,5 +27,6 @@ export const Home: React.FC = () => {
             <MakeupSection />
             <FooterCollapse />
         </HomeContainer>
+        </>
     )
 };

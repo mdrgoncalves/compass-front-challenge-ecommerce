@@ -11,6 +11,8 @@ export const ProductContainer = styled.main`
         "slider desc"
         "tabs tabs"; 
     padding: 0 20px;
+    max-width: 1280px;
+    margin: 0 auto;
 
     .page-path {
         grid-area: page-path;

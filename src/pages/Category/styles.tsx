@@ -10,6 +10,9 @@ export const CategoryContainer = styled.main`
         "banner banner"
         "page-params page-params"
         "filter products"; 
+
+    max-width: 1280px;
+    margin: 0 auto;
         
     .category__banner {
         grid-area: banner;

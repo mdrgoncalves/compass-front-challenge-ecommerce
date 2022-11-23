@@ -31,8 +31,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        max-width: 1280px;
-        margin: 0 auto;
         position: relative;
     }
 
