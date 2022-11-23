@@ -7,14 +7,15 @@ import { HandpickedCollections } from "../../components/HandpickedCollections";
 import { BrandsSection } from "../../components/BrandsSection";
 import { CallToApp } from "../../components/Mobile/CallToApp";
 import { MakeupSection } from "../../components/MakeupSection";
-import { Footer } from "../../components/Footer";
 import { FooterCollapse } from "../../components/Mobile/FooterCollapse";
+import { MobileNav } from "../../components/Mobile/MobileNav";
 
 export const Home: React.FC = () => {
     return (
         <>
             <HeaderMobile />
             <StatusBanner />
+            <MobileNav />
             <PromoBanner />
             <TopCategories />
             <ArrivalsSection />
