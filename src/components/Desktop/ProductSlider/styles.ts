@@ -13,6 +13,7 @@ export const SliderContainer = styled.div`
 export const BigImage = styled.img`
 
     width: 94.5%;
+    margin-top: -25px;
 `;
 
 export const ThumbsContainer = styled.div`
