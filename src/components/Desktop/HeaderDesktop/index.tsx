@@ -1,11 +1,25 @@
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 
 import { IconButton } from "../../IconButton"
+import { BasketModal } from "../BasketModal"
 import { SearchInput } from "./SearchInput"
 import { ButtonsContainer, HeaderContainer, ListContainer, MenuContainer } from "./styles"
 
 export const HeaderDesktop: React.FC = () => {
+
+    const [isBasketOpen, setIsBasketOpen] = useState(false)
+
+    useEffect(() => {
+        if (isBasketOpen) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = "unset"
+        }
+    }, [isBasketOpen])
+
     return (
+
         <HeaderContainer>
             <MenuContainer>
                 <NavLink to="/">
@@ -35,8 +49,13 @@ export const HeaderDesktop: React.FC = () => {
                 <SearchInput />
                 <IconButton iconSrc='/assets/img/wishlist-icon.svg' alt='favorite icon'/>
                 <IconButton iconSrc='/assets/img/profile-icon.svg' alt='profile icon'/>
-                <IconButton iconSrc='/assets/img/bag-icon.svg' alt='bag icon'/>
+                <IconButton 
+                    iconSrc='/assets/img/bag-icon.svg' 
+                    alt='bag icon'
+                    onClick={() => setIsBasketOpen(true)}
+                />
             </ButtonsContainer>
+            {isBasketOpen && <BasketModal onClose={() => setIsBasketOpen(false)}/>}
         </HeaderContainer>
     )
 }
