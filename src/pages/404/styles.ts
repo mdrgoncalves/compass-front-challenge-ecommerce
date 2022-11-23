@@ -7,6 +7,10 @@ export const PageContainer = styled.main`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 985px) {
+        height: 100vh;
+    }
 `;
 
 export const PageContent = styled.div`
@@ -24,5 +28,17 @@ export const PageContent = styled.div`
     .desc {
         width: 60%;
         color: var(--color-low-emphasis);
+    }
+`;
+
+export const BackContainer = styled.div`
+
+    display: flex;
+    align-items: center;
+
+    span {
+        color: var(--color-primary);
+        font-weight: 600;
+        cursor: pointer;
     }
 `;

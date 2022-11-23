@@ -1,6 +1,10 @@
-import { PageContainer, PageContent } from "./styles";
+import { useNavigate } from "react-router-dom";
+import { BackButton } from "../../components/Mobile/BackButton";
+import { BackContainer, PageContainer, PageContent } from "./styles";
 
 export const Page404: React.FC = () => {
+
+    const navigate = useNavigate();
 
     return (
 
@@ -10,6 +14,10 @@ export const Page404: React.FC = () => {
                 <h1>404</h1>
                 <h2>Not Found</h2>
                 <p className='desc'>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
+                <BackContainer>
+                    <BackButton />
+                    <span onClick={() => navigate('/')}>Back to Home</span>
+                </BackContainer>
             </PageContent>
         </PageContainer>
     )
