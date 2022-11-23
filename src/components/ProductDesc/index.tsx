@@ -77,7 +77,7 @@ export const ProductDesc: React.FC<ProductDescProps> = ({
                 </Carousel>
             )
         })}
-        <QuantityInput />
+        <QuantityInput label='Quantity'/>
         </>
     );  
 };

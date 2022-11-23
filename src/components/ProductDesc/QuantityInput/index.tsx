@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { InputContainer, InputWrapper } from "./styles";
 
-export const QuantityInput : React.FC = () => {
+interface InputProps {
+    label?: string;
+}
+
+export const QuantityInput : React.FC<InputProps> = ({
+    label
+}) => {
 
     const [quantity, setQuantity] = useState(1);
 
@@ -20,7 +26,7 @@ export const QuantityInput : React.FC = () => {
     return (
         
         <InputContainer>
-            <label>Quantity:</label>
+            {label ? <label>{label}:</label> : null}
             <InputWrapper>
                 <button onClick={handleMinus}> 
                     <img src='/assets/img/icons/minus-icon.svg' alt='minus' />
@@ -37,3 +43,22 @@ export const QuantityInput : React.FC = () => {
         </InputContainer>
     );  
 };
+
+/*
+<InputContainer>
+            <label>Quantity:</label>
+            <InputWrapper>
+                <button onClick={handleMinus}> 
+                    <img src='/assets/img/icons/minus-icon.svg' alt='minus' />
+                </button>
+                <input 
+                    type='number' 
+                    value={quantity}
+                    onChange={(e) => setQuantity(parseInt(e.target.value))} 
+                />
+                <button onClick={handlePlus}> 
+                    <img src='/assets/img/icons/plus-icon.svg' alt='plus' />
+                </button>
+            </InputWrapper>
+        </InputContainer>
+        */
