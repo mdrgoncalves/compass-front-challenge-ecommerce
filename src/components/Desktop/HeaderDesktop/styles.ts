@@ -7,6 +7,8 @@ export const HeaderContainer = styled.header`
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
     padding: 29px 20px;
 
     @media (max-width: 985px) {

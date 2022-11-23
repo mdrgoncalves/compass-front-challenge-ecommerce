@@ -3,14 +3,24 @@ import { font } from "../../styles/mixins";
 
 export const FooterContainer = styled.footer`
 
+    background-color: var(--color-primary);
+    padding: 60px 32px;
+    width: 100%;
+
+    @media (max-width: 985px) {
+        padding: 0; 
+    }
+`;
+
+export const FooterWrapper = styled.div`
+
     display: flex;
     justify-content: space-between;
-    background-color: var(--color-primary);
-    padding: 60px 32px; 
+    max-width: 1280px;
+    margin: 0 auto;
 
     @media (max-width: 985px) {
         flex-direction: column;
-        padding: 0; 
     }
 `;
 
@@ -18,6 +28,7 @@ export const ColumnsContainer = styled.div`
 
     display: flex;
     gap: 68px;
+    
 
     h3 {
         font-size: 1rem;
@@ -107,6 +118,10 @@ export const SocialContainer = styled.div`
         align-items: flex-start;
         padding: 24px 16px;
         border-top: 1px solid var(--color-primary-tint);
+
+        .footer-copyright {
+            margin-top: 1rem;
+        }
     }
 `
 
