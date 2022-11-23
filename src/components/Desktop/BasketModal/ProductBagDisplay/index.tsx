@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { QuantityInput } from "../../../ProductDesc/QuantityInput";
 import { 
     ProductContainer, 
@@ -13,6 +14,7 @@ interface ProductBagDisplayProps {
     description: string;
     price: string;
     onClick: () => void;
+    setState?: (value: number) => void;
 }
 
 export const ProductBagDisplay: React.FC<ProductBagDisplayProps> = ({
@@ -20,8 +22,17 @@ export const ProductBagDisplay: React.FC<ProductBagDisplayProps> = ({
     title,
     description,
     price,
-    onClick
+    onClick,
+    setState
 }) => {
+
+    const [quantity, setQuantity] = useState(1);
+
+    useEffect(() => {
+        if (setState) {
+            setState(quantity);
+        }
+    }, [quantity]);
 
     return (
         
@@ -31,7 +42,9 @@ export const ProductBagDisplay: React.FC<ProductBagDisplayProps> = ({
                 <ProductContent>
                     <h3>{title}</h3>
                     <p>{description}</p>
-                    <QuantityInput />
+                    <QuantityInput 
+                        setState={setQuantity}
+                    />
                 </ProductContent>
             </ProductLeft>
             <ProductRight>

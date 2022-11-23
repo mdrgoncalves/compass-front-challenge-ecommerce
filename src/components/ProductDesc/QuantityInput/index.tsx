@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InputContainer, InputWrapper } from "./styles";
 
 interface InputProps {
     label?: string;
+    setState?: (value: number) => void;
 }
 
 export const QuantityInput : React.FC<InputProps> = ({
-    label
+    label,
+    setState
 }) => {
 
     const [quantity, setQuantity] = useState(1);
@@ -22,6 +24,12 @@ export const QuantityInput : React.FC<InputProps> = ({
             setQuantity(quantity + 1);
         }
     }
+
+    useEffect(() => {
+        if (setState) {
+            setState(quantity);
+        }
+    }, [quantity]);
 
     return (
         
