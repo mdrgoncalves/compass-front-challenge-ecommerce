@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ProductContainer = styled.div`
+export const ProductContainer = styled.main`
 
     display: grid; 
     grid-template-columns: 1fr minmax(300px, 1fr); 

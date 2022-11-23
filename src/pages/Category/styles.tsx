@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CategoryContainer = styled.div`
+export const CategoryContainer = styled.main`
 
     display: grid; 
     grid-template-columns: auto auto; 

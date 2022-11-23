@@ -9,10 +9,11 @@ import { CallToApp } from "../../components/Mobile/CallToApp";
 import { MakeupSection } from "../../components/MakeupSection";
 import { FooterCollapse } from "../../components/Mobile/FooterCollapse";
 import { MobileNav } from "../../components/Mobile/MobileNav";
+import { HomeContainer } from "./styles";
 
 export const Home: React.FC = () => {
     return (
-        <>
+        <HomeContainer>
             <HeaderMobile />
             <StatusBanner />
             <MobileNav />
@@ -24,6 +25,6 @@ export const Home: React.FC = () => {
             <CallToApp />
             <MakeupSection />
             <FooterCollapse />
-        </>
+        </HomeContainer>
     )
 };
