@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BagState } from "../../context/BagContext";
 import { Button } from "../Button";
 
@@ -10,23 +10,34 @@ export const AddToBagButton: React.FC<AddToBagProps> = ({
     product
 }) => {
 
-    const { dispatch } = BagState();
+    const { state: { bag }, dispatch } = BagState();
+    
+    const isInBag = bag.find((item: any) => item.id === product.id);
     const [isBag, setIsBag] = useState(false);
+
+    useEffect(() => {
+        if (isInBag) {
+            setIsBag(true);
+        } else {
+            setIsBag(false);
+        }
+    }, [isInBag]);
 
     const handleAddToBag = () => {
 
-        if (!isBag) {
-            dispatch({
-                type: 'ADD_TO_BAG',
-                payload: product
-            });
-        } else {
+        if (isInBag) {
             dispatch({
                 type: 'REMOVE_FROM_BAG',
                 payload: product.id
             });
+            setIsBag(false);
+        } else {
+            dispatch({
+                type: 'ADD_TO_BAG',
+                payload: product
+            });
+            setIsBag(true);
         }
-        setIsBag(!isBag);
     }
 
     return (
