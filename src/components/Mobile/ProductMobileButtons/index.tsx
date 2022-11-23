@@ -1,15 +1,19 @@
-import { Button} from "../../../components/Button";
+import { AddToBagButton } from "../../AddToBagButton";
 import { ButtonsContainer } from "./styles";
 
-export const ProductMobileButtons: React.FC = () => {
+interface ProductMobileButtonsProps {
+    product: any;
+}
+
+export const ProductMobileButtons: React.FC<ProductMobileButtonsProps> = ({
+    product
+}) => {
 
     return (
         
         <ButtonsContainer>
             <img src='/assets/img/wishlist-icon.svg' alt='favorite' />
-            <Button color='primary' iconType='bag'>
-                Add to bag
-            </Button>
+            <AddToBagButton product={product}/>
         </ButtonsContainer>
     );  
 };
