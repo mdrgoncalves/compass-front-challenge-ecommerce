@@ -20,13 +20,13 @@ export const Footer: React.FC = () => {
                         <h3>Shop by Category</h3>
                         <nav>
                             <ItemsList>
-                                <li><Link to="/">Skincare</Link></li>
-                                <li><Link to="/">Personal Care</Link></li>
-                                <li><Link to="/">Handbags</Link></li>
-                                <li><Link to="/">Apparels</Link></li>
-                                <li><Link to="/">Watches</Link></li>
-                                <li><Link to="/">Eye Wear</Link></li>
-                                <li><Link to="/">Jewellery</Link></li>
+                                <li><Link to="/category/skincare">Skincare</Link></li>
+                                <li><Link to="/404">Personal Care</Link></li>
+                                <li><Link to="/category/handbags">Handbags</Link></li>
+                                <li><Link to="/category/apparels">Apparels</Link></li>
+                                <li><Link to="/category/watches">Watches</Link></li>
+                                <li><Link to="/404">Eye Wear</Link></li>
+                                <li><Link to="/category/jewellery">Jewellery</Link></li>
                             </ItemsList>
                         </nav>
                     </div>
@@ -34,10 +34,10 @@ export const Footer: React.FC = () => {
                         <h3>About</h3>
                         <nav>
                             <ItemsListRow>
-                                <li><Link to="/">Contact Us</Link></li>
-                                <li><Link to="/">About Us</Link></li>
-                                <li><Link to="/">Careers</Link></li>
-                                <li><Link to="/">Press</Link></li>
+                                <li><Link to="/404">Contact Us</Link></li>
+                                <li><Link to="/404">About Us</Link></li>
+                                <li><Link to="/404">Careers</Link></li>
+                                <li><Link to="/404">Press</Link></li>
                             </ItemsListRow>
                         </nav>
                     </div>
@@ -45,12 +45,12 @@ export const Footer: React.FC = () => {
                         <h3>Policy</h3>
                         <nav>
                             <ItemsListRow>
-                                <li><Link to="/">Return</Link></li>
-                                <li><Link to="/">Terms of Use</Link></li>
-                                <li><Link to="/">Sitemap</Link></li>
-                                <li><Link to="/">Security</Link></li>
-                                <li><Link to="/">Privacy</Link></li>
-                                <li><Link to="/">EPR Compliance</Link></li>
+                                <li><Link to="/404">Return</Link></li>
+                                <li><Link to="/404">Terms of Use</Link></li>
+                                <li><Link to="/404">Sitemap</Link></li>
+                                <li><Link to="/404">Security</Link></li>
+                                <li><Link to="/404">Privacy</Link></li>
+                                <li><Link to="/404">EPR Compliance</Link></li>
                             </ItemsListRow>
                         </nav>
                     </div>

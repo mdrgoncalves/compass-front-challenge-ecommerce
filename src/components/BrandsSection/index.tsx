@@ -8,22 +8,22 @@ export const BrandsSection: React.FC = () => {
         <BrandsContainer>
             <HeaderSection isDesktopHidden/>
             <BrandsGrid>
-                <Link to='/'>
+                <Link to='/404'>
                     <img src='/assets/img/icons/zara-block.png' alt='zara care icon' />
                 </Link>
-                <Link to='/'>
+                <Link to='/404'>
                     <img src='/assets/img/icons/dg-block.png' alt='d&g icon' />
                 </Link>
-                <Link to='/'>
+                <Link to='/404'>
                     <img src='/assets/img/icons/hm-block.png' alt='h&m watches icon' />
                 </Link>
-                <Link to='/'>
+                <Link to='/404'>
                     <img src='/assets/img/icons/chanel-block.png' alt='chanel icon' />
                 </Link>
-                <Link to='/'>
+                <Link to='/404'>
                     <img src='/assets/img/icons/prada-block.png' alt='prada icon' />
                 </Link>
-                <Link to='/'>
+                <Link to='/404'>
                     <img src='/assets/img/icons/biba-block.png' alt='biba icon' />
                 </Link>
             </BrandsGrid>

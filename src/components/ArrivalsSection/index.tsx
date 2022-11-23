@@ -10,7 +10,7 @@ export const ArrivalsSection = () => {
         <ArrivalsContainer>
             <ArrivalsContent>
                 <h2>New Arrivals</h2>
-                <Link to='/'>
+                <Link to='/category/handbags'>
                     View All
                     {useWidth({
                         renderMobile: () => (

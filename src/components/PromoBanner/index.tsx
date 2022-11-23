@@ -21,7 +21,7 @@ export const PromoBanner: React.FC = () => {
                     </CarouselMobileContainer>
                 ),
                 renderDesktop: () => (
-                    <NavLink to='/'>
+                    <NavLink to='/category/handbags'>
                         <PromoImageDesktop src='/assets/img/funk-banner-desktop.png' alt='funk promotion banner' />
                     </NavLink>
                 )

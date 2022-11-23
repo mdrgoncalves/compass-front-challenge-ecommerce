@@ -9,19 +9,19 @@ export const MakeupSection: React.FC = () => {
         <MakeupContainer>
             <Heading>Makeup & Skincare</Heading>
             <MakeupGrid>
-                <Link to='/' className='big-banner'>
+                <Link to='/category/skincare' className='big-banner'>
                     <picture>
                         <source srcSet='/assets/img/icons/lifestyle-hero-2x.png' media='(min-width: 768px)'/>
                         <img src='/assets/img/icons/lifestyle-hero-1x.png' alt='lifestyle banner' />
                     </picture>
                 </Link>
-                <Link to='/' className='small-banner-one'>
+                <Link to='/category/skincare' className='small-banner-one'>
                     <picture>
                         <source srcSet='/assets/img/icons/skincare-essentials-hero-2x.png' media='(min-width: 768px)'/>
                         <img src='/assets/img/icons/skincare-essentials-hero-1x.png' alt='skincare banner' />
                     </picture>
                 </Link>
-                <Link to='/' className='small-banner-two'>
+                <Link to='/category/skincare' className='small-banner-two'>
                     <picture>
                         <source srcSet='/assets/img/icons/facepack-peels-hero-2x.png' media='(min-width: 768px)'/>
                         <img src='/assets/img/icons/facepack-peels-hero-1x.png' alt='facepack and peels banner' />
@@ -31,5 +31,3 @@ export const MakeupSection: React.FC = () => {
         </MakeupContainer>
     );  
 };
-
-//<img src='/assets/img/icons/lifestyle-hero.png' alt='zara care icon' />

@@ -17,7 +17,7 @@ export const PathPage: React.FC<PathPageProps> = ({
             {paths.map((path, index) => (
                 <span key={index}>
                     <img src='/assets/img/icons/chevron-right-small-icon.png' alt='right chevron' />
-                    {index === pathLength ? <span>{path}</span> : <Link to={`/${path}`}>{path}</Link>}
+                    {index === pathLength ? <span>{path}</span> : <Link to={`/category/${path}`}>{path}</Link>}
                 </span>
             ))}
         </PathContainer>
