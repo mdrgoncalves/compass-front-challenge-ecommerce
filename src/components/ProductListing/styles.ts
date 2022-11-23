@@ -6,6 +6,7 @@ export const ProductsContainer = styled.div`
     flex-direction: column;
     gap: 24px;
     margin-bottom: 100px;
+    padding: 0 26px 100px 0;
 
     @media (max-width: 1024px) {
         margin-right: 1.5rem;
