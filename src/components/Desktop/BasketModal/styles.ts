@@ -23,6 +23,10 @@ export const ModalContainer = styled.div`
     right: 0.5rem;
     top: 10%;
     padding: 12px 5px 0 12px;
+
+    @media (min-width: 1281px) {
+        right: 17.5%;
+    }
 `;
 
 export const CloseContainer = styled.div`
