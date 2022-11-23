@@ -28,7 +28,9 @@ export const HeaderDesktop: React.FC = () => {
                 <nav>
                     <ListContainer>
                         <li>
-                            <NavLink to='/category/handbags'>Handbags</NavLink>
+                            <NavLink to='/category/handbags'>
+                                Handbags
+                            </NavLink>
                         </li>
                         <li>
                             <NavLink to='/category/watches'>Watches</NavLink>

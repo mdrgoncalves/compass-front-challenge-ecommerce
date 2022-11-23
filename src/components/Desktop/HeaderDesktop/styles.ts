@@ -38,6 +38,12 @@ export const ListContainer = styled.div`
         &:hover {
             color: var(--color-highlight);
         }
+
+        &.active {
+            color: var(--color-primary);
+            font-size: 1rem;
+            font-weight: 600;
+        }
     }
 `;
 
