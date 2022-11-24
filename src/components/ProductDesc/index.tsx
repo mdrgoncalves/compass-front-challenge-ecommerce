@@ -18,12 +18,14 @@ interface ProductDescProps {
     name: string;
     description: string;
     price: string;
+    productId?: number;
 }
 
 export const ProductDesc: React.FC<ProductDescProps> = ({
     name,
     description,
-    price
+    price,
+    productId
 }) => {
 
     return (
@@ -77,7 +79,10 @@ export const ProductDesc: React.FC<ProductDescProps> = ({
                 </Carousel>
             )
         })}
-        <QuantityInput label='Quantity'/>
+        <QuantityInput 
+            label='Quantity'
+            productId={productId}
+        />
         </>
     );  
 };

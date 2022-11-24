@@ -11,19 +11,6 @@ export const BagReducer = (state: any, action: any) => {
                 ...state,
                 bag: state.bag.filter((item: any) => item.id !== action.payload)
             }
-        case 'CHANGE_BAG_QUANTITY':
-            return {
-                ...state,
-                bag: state.bag.map((item: any) => {
-                    if (item.id === action.payload.id) {
-                        return {
-                            ...item,
-                            quantity: action.payload.quantity
-                        }
-                    }
-                    return item;
-                })
-            }
         default:
             return state;
     }

@@ -50,6 +50,7 @@ export const Product: React.FC = () => {
                     name={name}
                     description={description}
                     price={price}
+                    productId={Number(productId)}
                 />
                 <div className='desc__buttons'>
                     <Button 

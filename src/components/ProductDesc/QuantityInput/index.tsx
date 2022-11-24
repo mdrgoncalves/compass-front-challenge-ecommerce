@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react";
+import { BagState } from "../../../context/BagContext";
 import { InputContainer, InputWrapper } from "./styles";
 
 interface InputProps {
     label?: string;
-    setState?: (value: number) => void;
+    productId: number;
 }
 
 export const QuantityInput : React.FC<InputProps> = ({
     label,
-    setState
+    productId
 }) => {
 
-    const [quantity, setQuantity] = useState(1);
+    const { bagQuantity, setBagQuantity } = BagState();
+
+    const [quantity, setQuantity] = useState(() => {
+        if (bagQuantity[productId]) {
+            return bagQuantity[productId];
+        }
+        return 1;
+    });
 
     const handleMinus = () => {
         if (quantity > 1) {
@@ -26,8 +34,12 @@ export const QuantityInput : React.FC<InputProps> = ({
     }
 
     useEffect(() => {
-        if (setState) {
-            setState(quantity);
+        if (productId) {
+            setBagQuantity({
+                ...bagQuantity,
+                [productId]: quantity
+            });
+            console.log(bagQuantity)
         }
     }, [quantity]);
 
@@ -51,22 +63,3 @@ export const QuantityInput : React.FC<InputProps> = ({
         </InputContainer>
     );  
 };
-
-/*
-<InputContainer>
-            <label>Quantity:</label>
-            <InputWrapper>
-                <button onClick={handleMinus}> 
-                    <img src='/assets/img/icons/minus-icon.svg' alt='minus' />
-                </button>
-                <input 
-                    type='number' 
-                    value={quantity}
-                    onChange={(e) => setQuantity(parseInt(e.target.value))} 
-                />
-                <button onClick={handlePlus}> 
-                    <img src='/assets/img/icons/plus-icon.svg' alt='plus' />
-                </button>
-            </InputWrapper>
-        </InputContainer>
-        */

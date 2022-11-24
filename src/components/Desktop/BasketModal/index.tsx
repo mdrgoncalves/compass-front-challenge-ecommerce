@@ -22,26 +22,24 @@ export const BasketModal: React.FC<ModalProps> = ({
     onClose
 }) => {
 
-    const { state: { bag }, dispatch } = BagState();
+    const { state: { bag }, dispatch, bagQuantity } = BagState();
 
     const [subTotal, setSubTotal] = useState(0);
     const [totalItems, setTotalItems] = useState(0);
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
-        setSubTotal(
-            bag.reduce((prevValue: number, currValue: any) => {
-                let price = Number(currValue.price.replace('$', ''));
-                return prevValue + price * currValue.quantity;
-            }, 0)
-        )
-        setTotalItems(bag.length.toFixed(2));
-    }, [bag]);
-
-    useEffect(() => {
-        setTotal(Number(subTotal) + Number(totalItems));
-    }, [subTotal]);
-
+        let total = 0;
+        let items = 0;
+        bag.forEach((item: any) => {
+            total += Number(item.price.replace('$', '')) * bagQuantity[item.id];
+            items += bagQuantity[item.id];
+        });
+        setSubTotal(total);
+        setTotalItems(items);
+        setTotal(total);
+    }, [bag, bagQuantity]);
+    
     return (
         
         <ModalWrapper>
@@ -63,7 +61,7 @@ export const BasketModal: React.FC<ModalProps> = ({
                                 description={product.description}
                                 price={product.price}
                                 onClick={() => dispatch({ type: 'REMOVE_FROM_BAG', payload: product.id })}
-                                setState={(value: number) => dispatch({ type: 'CHANGE_BAG_QUANTITY', payload: { id: product.id, quantity: value } })}
+                                productId={product.id}
                             />
                         ))}
                         </>    
