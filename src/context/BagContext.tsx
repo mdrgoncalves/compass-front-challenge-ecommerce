@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useReducer, useState } from 'react';
 import { BagReducer } from './BagReducer';
 
 const BagContext = createContext({} as any);
@@ -9,8 +9,10 @@ const BagProvider = ({ children }: any) => {
         bag: []
     });
 
+    const [bagQuantity, setBagQuantity] = useState({})
+
     return (
-        <BagContext.Provider value={{ state, dispatch }}>
+        <BagContext.Provider value={{ state, dispatch, bagQuantity, setBagQuantity }}>
             {children}
         </BagContext.Provider>
     );
