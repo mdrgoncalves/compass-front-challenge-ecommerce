@@ -1,6 +1,8 @@
+import { withRouter } from "storybook-addon-react-router-v6";
+
 import { GlobalStyle } from "../src/styles/global.ts";
 import BagProvider from "../src/context/BagContext";
-import { withRouter } from "storybook-addon-react-router-v6";
+import ViewportProvider from "../src/context/viewportContext";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -15,8 +17,10 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <BagProvider>
+      <ViewportProvider>
         <GlobalStyle />
         <Story />
+      </ViewportProvider>
     </BagProvider>
   ),
   withRouter
