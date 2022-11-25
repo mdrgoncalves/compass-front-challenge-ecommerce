@@ -11,3 +11,14 @@ export const SpacerContainer = styled.div`
         display: none;
     }
 `;
+
+export const StorybookDiv = styled.div`
+
+    width: 360px;
+
+    div {
+        display: block;
+        margin-left: 1rem;
+    }
+`;
+        
