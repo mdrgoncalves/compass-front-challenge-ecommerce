@@ -18,7 +18,7 @@ interface ProductDescProps {
     name: string;
     description: string;
     price: string;
-    productId?: number;
+    productId: number;
 }
 
 export const ProductDesc: React.FC<ProductDescProps> = ({
