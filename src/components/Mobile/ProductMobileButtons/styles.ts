@@ -17,3 +17,13 @@ export const ButtonsContainer = styled.div`
         display: none;
     }
 `;
+
+export const StorybookDiv = styled.div`
+
+    width: 360px;
+
+    div {
+        display: flex;
+        position: relative;
+    }
+`;

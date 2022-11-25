@@ -22,3 +22,12 @@ export const FilterButton = styled.button`
     background-color: var(--color-bright);
     ${font.titleMedium};
 `;
+
+export const StorybookDiv = styled.div`
+
+    width: 360px;
+
+    div {
+        position: relative;
+    }
+`;

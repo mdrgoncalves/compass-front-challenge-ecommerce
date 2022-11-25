@@ -39,3 +39,9 @@ export const Thumbnail = styled.img`
     height: 12.36%;
     border-radius: 8px;
 `;
+
+export const StorybookDiv = styled.div`
+
+    width: 450px;
+    padding-top: 2rem;
+`;

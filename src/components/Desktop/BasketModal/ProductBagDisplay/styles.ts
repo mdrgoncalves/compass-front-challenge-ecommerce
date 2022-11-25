@@ -6,6 +6,7 @@ export const ProductContainer = styled.article`
     display: flex;
     justify-content: space-between;
     height: 155px;
+    max-width: 400px;
     padding: 24px 0 52px 0;
     border-bottom: 1px solid #e6e6e6;
 `;

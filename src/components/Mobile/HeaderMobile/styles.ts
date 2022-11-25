@@ -26,6 +26,16 @@ export const MobileMenuContainer = styled.div`
 `;
 
 export const MobileButtonsContainer = styled.div`
+
     display: flex;
     gap: 24px;
+`;
+
+export const StorybookDiv = styled.div`
+
+    width: 360px;
+
+    header {
+        display: flex;
+    }
 `;
