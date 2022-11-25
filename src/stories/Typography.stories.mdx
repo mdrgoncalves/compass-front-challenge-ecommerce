@@ -1,0 +1,45 @@
+import { Meta, Typeset } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/3. Typography" />
+
+export const typography = {
+    type: {
+        primary: 'Inter, sans-serif',
+    },
+    weight: {
+        regular: '400',
+        medium: '500',
+        bold: '600',
+        extrabold: '700',
+    },
+    size: {
+        l1: 52,
+        l2: 34,
+        m1: 20,
+        m2: 16,
+        s1: 14,
+        s2: 12,
+    },
+};
+
+export const SampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+
+# Typography
+
+**Font:** Inter
+
+**Weights:** 400(regular), 700(bold), 800(extrabold), 900(black)
+
+<Typeset
+    fontSizes={[
+        Number(typography.size.l1),
+        Number(typography.size.l2),
+        Number(typography.size.m1),
+        Number(typography.size.m2),
+        Number(typography.size.s1),
+        Number(typography.size.s2),
+    ]}
+    fontWeight={typography.weight.black}
+    sampleText={SampleText}
+    fontFamily={typography.type.primary}
+/>
