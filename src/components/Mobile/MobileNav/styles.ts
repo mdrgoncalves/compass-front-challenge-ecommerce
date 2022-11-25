@@ -46,3 +46,12 @@ export const NavItem = styled(NavLink)`
         filter: brightness(0) saturate(100%) invert(29%) sepia(8%) saturate(3044%) hue-rotate(158deg) brightness(95%) contrast(107%);
     }
 `;
+
+export const StorybookDiv = styled.div`
+
+    ul {
+        display: flex;
+        width: 360px;
+        position: relative;
+    }
+`;
