@@ -1,2 +1,62 @@
-# compass-front-challenge-ecommerce
- 
+<h1 align="center">
+    Compass E-commerce
+</h1>
+
+<p align="center">
+ • <a href="#-about">About</a> 
+ • <a href="#-web-live">Web Live</a>  
+ • <a href="#-tech-stack">Tech Stack</a>  
+ • <a href="#-how-to-run">How to run</a>
+</p>
+
+<p align="center">
+  <img src="https://i.ibb.co/0ZxP4RQ/Shopware-Cover-final.png" width="60%" />
+</p>
+
+## 💻 About
+
+E-commerce - Front-end challenge for Compass.Uol Scholarship Program.
+
+Development of a complete responsive ecommerce site with pagination of products and cart.
+
+---
+
+## 🌐 Web Live
+
+Live Site URL: [Vercel](https://compass-front-challenge-ecommerce.vercel.app/)
+
+---
+
+## 🛠 Tech Stack
+
+The following tools were used in the construction of the project:
+
+-   **[Vite](https://vitejs.dev/guide/)**
+-   **[HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)**
+-   **[Styled-Components](https://styled-components.com/docs)**
+-   **[Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)**
+-   **[Typescript](https://www.typescriptlang.org/docs/)**
+-   **[ReactJS](https://reactjs.org/docs/getting-started.html)**
+-   **[Storybook](https://storybook.js.org/docs/html/get-started/introduction)**
+
+---
+
+## ⚙️ How to Run
+
+Install dependencies
+
+```bash 
+npm install  
+```
+
+Run application in developer mode
+
+```bash 
+npm run dev
+```
+
+Run the application's Storybook
+
+```bash 
+npm run storybook
+```
