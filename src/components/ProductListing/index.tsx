@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import productsData from '../../data/productsData';
+import { ProductState } from '../../context/ProductContext';
+import { IProduct } from '../../types/Products';
 import { useWidth } from '../../utils/useWidth';
 import { CategoryFilterMobile } from '../Mobile/CategoryFilterMobile';
 import { CategoryMobileHeader } from '../Mobile/CategoryMobileHeader';
@@ -18,7 +19,12 @@ export const ProductListing: React.FC = () => {
     const [productsPerPage] = useState(9);
 
     // Get Products List according to Category
-    const productsList = productsData.filter(products => products.category === category);
+    const { getProductsByCategory, categoryProducts } = ProductState();
+    const productsList = categoryProducts;
+    
+    useEffect(() => {
+        getProductsByCategory(category);
+    }, [category]);
 
     // Get Current Product
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -52,17 +58,28 @@ export const ProductListing: React.FC = () => {
                     totalProducts={productsList.length}
                 />
                 <ProductsGrid>
-                    {productsList.map(product => (
-                        <ProductItem
-                            key={product.id}
-                            category={product.category}
-                            id={product.id}
-                            imgSrc={product.img}
-                            title={product.name}
-                            desc={product.description}
-                            price={product.price}
-                        />
-                    ))}
+                    {productsList.map((product: IProduct) => {
+                        const { 
+                            _id, 
+                            productName, 
+                            productImage, 
+                            productDescription,
+                            productPrice,
+                            productCategory
+                        } = product;
+
+                        return (
+                            <ProductItem
+                                key={_id}
+                                category={productCategory}
+                                id={_id}
+                                imgSrc={productImage}
+                                title={productName}
+                                desc={productDescription}
+                                price={productPrice}
+                            />
+                        );
+                    })}
                 </ProductsGrid>
                 <CategoryFilterMobile />
                 </>
@@ -75,17 +92,28 @@ export const ProductListing: React.FC = () => {
                         totalProducts={productsList.length}
                     />
                     <ProductsGrid>
-                        {currentProducts.map(product => (
-                            <ProductItem
-                                category={product.category}
-                                id={product.id}
-                                key={product.id}
-                                imgSrc={product.img}
-                                title={product.name}
-                                desc={product.description}
-                                price={product.price}
-                            />
-                        ))}
+                        {currentProducts.map((product: IProduct) => {
+                            const { 
+                                _id, 
+                                productName, 
+                                productImage, 
+                                productDescription,
+                                productPrice,
+                                productCategory
+                            } = product;
+                            
+                            return (
+                                <ProductItem
+                                    key={_id}
+                                    category={productCategory}
+                                    id={_id}
+                                    imgSrc={productImage}
+                                    title={productName}
+                                    desc={productDescription}
+                                    price={productPrice}
+                                />
+                            );
+                        })}
                     </ProductsGrid>
                     <Pagination
                         productsPerPage={productsPerPage}

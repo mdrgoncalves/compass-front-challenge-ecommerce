@@ -13,11 +13,11 @@ import {
 
 interface ProductItemProps {
     category: string;
-    id: number;
+    id: string;
     imgSrc: string;
     title: string;
     desc: string;
-    price: string;
+    price: number;
 }
 
 export const ProductItem: React.FC<ProductItemProps> = ({
