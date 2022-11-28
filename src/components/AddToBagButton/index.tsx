@@ -12,9 +12,9 @@ export const AddToBagButton: React.FC<AddToBagProps> = ({
 
     const { state: { bag }, dispatch } = BagState();
     
-    const isInBag = bag.find((item: any) => item.id === product.id);
+    const isInBag = bag.find((item: any) => item._id === product._id);
     const [isBag, setIsBag] = useState(false);
-
+    
     useEffect(() => {
         if (isInBag) {
             setIsBag(true);
@@ -28,7 +28,7 @@ export const AddToBagButton: React.FC<AddToBagProps> = ({
         if (isInBag) {
             dispatch({
                 type: 'REMOVE_FROM_BAG',
-                payload: product.id
+                payload: product._id
             });
             setIsBag(false);
         } else {

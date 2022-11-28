@@ -9,7 +9,7 @@ export const BagReducer = (state: any, action: any) => {
         case 'REMOVE_FROM_BAG':
             return {
                 ...state,
-                bag: state.bag.filter((item: any) => item.id !== action.payload)
+                bag: state.bag.filter((item: any) => item._id !== action.payload)
             }
         default:
             return state;

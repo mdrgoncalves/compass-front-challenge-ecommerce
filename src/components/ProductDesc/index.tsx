@@ -17,8 +17,8 @@ import {
 interface ProductDescProps {
     name: string;
     description: string;
-    price: string;
-    productId: number;
+    price: number;
+    productId: string;
 }
 
 export const ProductDesc: React.FC<ProductDescProps> = ({
@@ -48,7 +48,7 @@ export const ProductDesc: React.FC<ProductDescProps> = ({
                 </div>
             </RatingDesktopMobile>
             <PriceContainer>
-                <CurrentPrice>{price}</CurrentPrice>
+                <CurrentPrice>${price}</CurrentPrice>
                 <OldPrice>$78.66</OldPrice>
                 <Discount>50%OFF</Discount>
             </PriceContainer>

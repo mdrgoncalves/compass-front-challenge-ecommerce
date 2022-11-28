@@ -11,9 +11,9 @@ interface ProductBagDisplayProps {
     imgSrc: string;
     title: string;
     description: string;
-    price: string;
+    price: number;
     onClick: () => void;
-    productId: number;
+    productId: string;
 }
 
 export const ProductBagDisplay: React.FC<ProductBagDisplayProps> = ({

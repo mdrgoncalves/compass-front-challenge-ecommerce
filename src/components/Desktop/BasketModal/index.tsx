@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BagState } from "../../../context/BagContext";
+import { IProduct } from "../../../types/Products";
 import { Button } from "../../Button";
 import { PincodeInput } from "../../ProductDesc/DeliveryDetails/PincodeInput";
 import { ProductBagDisplay } from "./ProductBagDisplay";
@@ -26,18 +27,17 @@ export const BasketModal: React.FC<ModalProps> = ({
 
     const [subTotal, setSubTotal] = useState(0);
     const [totalItems, setTotalItems] = useState(0);
-    const [total, setTotal] = useState(0);
 
     useEffect(() => {
-        let total = 0;
+        let subTotal = 0;
         let items = 0;
-        bag.forEach((item: any) => {
-            total += Number(item.price.replace('$', '')) * bagQuantity[item.id];
-            items += bagQuantity[item.id];
+        bag.forEach((item: IProduct) => {
+            subTotal += item.productPrice * bagQuantity[item._id];
+            items += bagQuantity[item._id];
+            item.productQuantity = bagQuantity[item._id];
         });
-        setSubTotal(total);
+        setSubTotal(subTotal);
         setTotalItems(items);
-        setTotal(total);
     }, [bag, bagQuantity]);
     
     return (
@@ -53,17 +53,28 @@ export const BasketModal: React.FC<ModalProps> = ({
                 <ProductDisplay>
                     {bag.length > 0 ? (
                         <>
-                        {bag.map((product: any) => (
-                            <ProductBagDisplay
-                                key={product.id}
-                                imgSrc={product.img}
-                                title={product.name}
-                                description={product.description}
-                                price={product.price}
-                                onClick={() => dispatch({ type: 'REMOVE_FROM_BAG', payload: product.id })}
-                                productId={product.id}
-                            />
-                        ))}
+                        {bag.map((product: IProduct) => {
+
+                            const { 
+                                _id, 
+                                productName, 
+                                productImage, 
+                                productDescription,
+                                productPrice,
+                            } = product;
+                        
+                            return (
+                                <ProductBagDisplay
+                                    key={_id}
+                                    imgSrc={productImage}
+                                    title={productName}
+                                    description={productDescription}
+                                    price={productPrice}
+                                    onClick={() => dispatch({type: 'REMOVE_FROM_BAG', payload: _id})}
+                                    productId={_id}
+                                />
+                            )
+                        })}
                         </>    
                     ) : (
                         <h2>Bag is empty</h2>
@@ -72,15 +83,15 @@ export const BasketModal: React.FC<ModalProps> = ({
                 <TotalContainer>
                     <p>
                         <span>Subtotal:</span>
-                        <span>${subTotal}</span>
+                        <span>${subTotal.toFixed(2)}</span>
                     </p>
                     <p>
                         <span>Tax:</span>
-                        <span>${totalItems}</span>
+                        <span>${totalItems.toFixed(2)}</span>
                     </p>
                     <p className='total'>
                         <span>Total:</span>
-                        <span>${total}</span>
+                        <span>${(subTotal + totalItems).toFixed(2)}</span>
                     </p>
                 </TotalContainer>
                 <CouponContainer>

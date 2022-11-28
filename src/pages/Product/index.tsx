@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import productsData from "../../data/productsData";
 
 import { Button} from "../../components/Button";
 import { ProductSlider } from "../../components/Desktop/ProductSlider";
@@ -17,17 +16,37 @@ import { MobileButtonTab } from "../../components/Mobile/MobileButtonTab";
 import { TrendingCarousel } from "../../components/Mobile/TrendingCarousel";
 import { ProductMobileButtons } from "../../components/Mobile/ProductMobileButtons";
 import { useWidth } from "../../utils/useWidth";
-import { BagState } from "../../context/BagContext";
 import { AddToBagButton } from "../../components/AddToBagButton";
+import { ProductState } from "../../context/ProductContext";
+import { useEffect, useState } from "react";
+import { IProduct } from "../../types/Products";
 
 
 export const Product: React.FC = () => {
 
     const { productId } = useParams<{ productId: string }>();
 
-    const thisProduct = productsData.find(product => product.id === Number(productId));
-    const { img, name, description, price, category } = thisProduct!;
-    const images = [img, img, img];
+    const { getProductById, product } = ProductState();
+
+    const [thisProduct, setThisProduct] = useState({} as IProduct);
+
+    useEffect(() => {
+        getProductById(productId);
+    }, [productId]);
+
+    useEffect(() => {
+        setThisProduct(product);
+    }, [product]);
+
+    const { 
+        _id,
+        productName, 
+        productImage, 
+        productDescription,
+        productPrice,
+        productCategory 
+    } = thisProduct;
+    const images = [productImage, productImage, productImage];
 
     return (
 
@@ -35,7 +54,7 @@ export const Product: React.FC = () => {
             <div className='page-path'>
                 <BackButton />
                 <PathPage
-                    paths={[`${category}`, `${name}`]}
+                    paths={[`${productCategory}`, `${productName}`]}
                 />
             </div>
             <div className='slider'>
@@ -46,10 +65,10 @@ export const Product: React.FC = () => {
             </div>
             <div className='desc'>
                 <ProductDesc 
-                    name={name}
-                    description={description}
-                    price={price}
-                    productId={Number(productId)}
+                    name={productName}
+                    description={productDescription}
+                    price={productPrice}
+                    productId={_id}
                 />
                 <div className='desc__buttons'>
                     <AddToBagButton product={thisProduct} />

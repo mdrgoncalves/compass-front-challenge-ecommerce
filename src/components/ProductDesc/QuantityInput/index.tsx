@@ -4,7 +4,7 @@ import { InputContainer, InputWrapper } from "./styles";
 
 interface InputProps {
     label?: string;
-    productId: number;
+    productId: string;
 }
 
 export const QuantityInput : React.FC<InputProps> = ({
@@ -39,7 +39,6 @@ export const QuantityInput : React.FC<InputProps> = ({
                 ...bagQuantity,
                 [productId]: quantity
             });
-            console.log(bagQuantity)
         }
     }, [quantity]);
 
