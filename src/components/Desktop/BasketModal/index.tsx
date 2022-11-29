@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BagState } from "../../../context/BagContext";
 import { IProduct } from "../../../types/Products";
 import { Button } from "../../Button";
@@ -23,6 +23,8 @@ export const BasketModal: React.FC<ModalProps> = ({
     onClose
 }) => {
 
+    const navigate = useNavigate();
+
     const { state: { bag }, dispatch, bagQuantity } = BagState();
 
     const [subTotal, setSubTotal] = useState(0);
@@ -39,7 +41,16 @@ export const BasketModal: React.FC<ModalProps> = ({
         setSubTotal(subTotal);
         setTotalItems(items);
     }, [bag, bagQuantity]);
-    
+
+    const handleCheckout = () => {
+        onClose();
+        navigate('/cart');
+    }
+
+    useEffect(() => {
+        localStorage.setItem('bag', JSON.stringify(bag));
+    }, [bag]);
+
     return (
         
         <ModalWrapper>
@@ -98,7 +109,10 @@ export const BasketModal: React.FC<ModalProps> = ({
                     <PincodeInput placeholder='Apply Coupon Code' />
                 </CouponContainer>
                 <ButtonContainer>
-                    <Button color='primary'>Place Order</Button>
+                    <Button 
+                        color='primary'
+                        onClick={() => handleCheckout()}
+                    >Place Order</Button>
                     <Link 
                         to='/category/handbags'
                         onClick={onClose}
