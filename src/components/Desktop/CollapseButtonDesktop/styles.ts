@@ -9,7 +9,7 @@ export const ButtonCollapse = styled.button`
     width: min(100%, 708px);
     background-color: transparent;
     border: none;
-    padding: 15px 0;
+    padding: 10px 0;
     border-bottom: 1px solid #E5E5E5;
     ${font.bodyMedium};
     font-weight: 600;
