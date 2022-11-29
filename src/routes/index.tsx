@@ -11,23 +11,27 @@ import BagProvider from '../context/BagContext';
 
 import { FooterDesktop } from '../components/Desktop/FooterDesktop';
 import { Page404 } from '../pages/404';
+import { Bag } from '../pages/Bag';
 
 export const Routes: React.FC = () => {
 
     return (
         <ProductProvider>
+            <ProductProvider>
             <BagProvider>
-                <ViewportProvider>
-                    <HeaderDesktop />
-                    <Switch>
-                        <Route element={<Home />} path="/" />
-                        <Route element={<Category />} path="/category/:category" />
-                        <Route element={<Product />} path="/category/:category/:productId" />
+                    <ViewportProvider>
+                        <HeaderDesktop />
+                        <Switch>
+                            <Route element={<Home />} path="/" />
+                            <Route element={<Category />} path="/category/:category" />
+                            <Route element={<Product />} path="/category/:category/:productId" />
+                            <Route element={<Bag />} path="/cart" />
                         <Route path="*" element={<Page404 />} />  
-                    </Switch>
-                    <FooterDesktop />
-                </ViewportProvider>
-            </BagProvider>
+                        </Switch>
+                        <FooterDesktop />
+                    </ViewportProvider>
+                </BagProvider>
+        </ProductProvider>
         </ProductProvider>
     )
 }
