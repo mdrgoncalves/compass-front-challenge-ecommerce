@@ -1,8 +1,7 @@
 import { BagDisplay } from "../../components/BagDisplay";
 import { CollapseButtonDesktop } from "../../components/Desktop/CollapseButtonDesktop";
-import { PageTitle } from "../../components/Desktop/PageTitle"
+import { PageHeader } from "../../components/Desktop/PageHeader";
 import { OrderSummary } from "../../components/OrderSummary";
-import { PathPage } from "../../components/PathPage"
 import { PincodeInput } from "../../components/ProductDesc/DeliveryDetails/PincodeInput";
 import { BagContainer, BagContent } from "./styles";
 
@@ -10,14 +9,10 @@ export const Bag: React.FC = () => {
 
     return(
         <BagContainer>
-            <div className='bag__path'>
-                <PathPage
-                    paths={['My Cart']}
-                />
-            </div>
-            <div className='bag__title'>
-                <PageTitle title='My Cart' />
-            </div>
+            <PageHeader 
+                title='My Cart'
+                paths={['My Cart']}
+            />
             <BagContent>
                 <div className='bag-content__left'>
                     <BagDisplay />

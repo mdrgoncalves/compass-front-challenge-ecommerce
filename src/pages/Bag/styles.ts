@@ -6,17 +6,6 @@ export const BagContainer = styled.main`
     min-height: 52.1vh;
     margin: 0 auto;
     padding: 0 20px;
-
-    .bag {
-
-        &__path {
-            margin: 24px 0 28px 0;
-        }
-
-        &__title {
-            margin-bottom: 2rem;
-        }
-    }
 `
 
 export const BagContent = styled.div`
