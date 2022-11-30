@@ -23,7 +23,6 @@ export const Bag: React.FC = () => {
                     </CollapseButtonDesktop>
                 </div>
                 <OrderSummary 
-                    title='Order Summary'
                     withButtons
                 />
             </BagContent>

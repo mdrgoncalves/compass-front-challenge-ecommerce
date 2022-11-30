@@ -2,15 +2,16 @@ import { useNavigate } from "react-router-dom";
 import { BagState } from "../../context/BagContext";
 import { IProduct } from "../../types/Products";
 import { Button } from "../Button";
-import { SummaryButtons, SummaryContainer, SummaryContent, SummaryLabel, TotalText } from "./styles";
+import { CartProductCard } from "../CartProductCard";
+import { ImagesWrapper, SummaryButtons, SummaryContainer, SummaryContent, SummaryLabel, TotalText } from "./styles";
 
 interface OrderSummaryProps {
-    title: string;
+    withImages?: boolean;
     withButtons?: boolean;
 }
 
 export const OrderSummary: React.FC<OrderSummaryProps> = ({
-    title,
+    withImages = false,
     withButtons = false
 }) => {
 
@@ -25,7 +26,25 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({
     return (
         
         <SummaryContainer>
-            <h2>{title}</h2>
+            <h2>Order Summary</h2>
+            {withImages ? (
+                <>
+                <ImagesWrapper>
+                    {bag.map((item: IProduct) => (
+                        <CartProductCard
+                            key={item._id}
+                            imgSrc={item.productImage}
+                            name={item.productName}
+                            description={item.productDescription}
+                            quantity={item.productQuantity}
+                        />    
+                    ))}
+                </ImagesWrapper>
+                <h2>Order Details</h2>
+                </>
+            ) : (
+                null
+            )}
             <SummaryContent>
                 <p>
                     <SummaryLabel>Sub Total</SummaryLabel>

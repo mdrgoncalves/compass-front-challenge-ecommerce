@@ -48,3 +48,11 @@ export const SummaryButtons = styled.div`
     gap: 2rem;
     margin-top: 40px;
 `;
+
+export const ImagesWrapper = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: 24px 0 48px 0;
+`;
