@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
+import { CartProductCard } from "../../CartProductCard";
 import { 
     TableItem, 
     TableItemButtons, 
-    TableItemInfo, 
     TableItemPrices, 
     TableItemValues 
 } from "./styles"
@@ -26,14 +26,12 @@ export const BagDisplayCard: React.FC<BagDisplayCardProps> = ({
     return(
         
         <TableItem>
-                <TableItemInfo>
-                    <img src={imgSrc} alt={`${name} image`} />
-                    <div>
-                        <h3>{name}</h3>
-                        <p>{description}</p>
-                        <p>Qty - {quantity}</p>
-                    </div>
-                </TableItemInfo>
+                <CartProductCard 
+                    imgSrc={imgSrc}
+                    name={name}
+                    description={description}
+                    quantity={quantity}
+                />
                 <TableItemValues>
                     <TableItemPrices>
                         <span>${price}</span>
