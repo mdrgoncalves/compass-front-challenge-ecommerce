@@ -12,6 +12,7 @@ import BagProvider from '../context/BagContext';
 import { FooterDesktop } from '../components/Desktop/FooterDesktop';
 import { Page404 } from '../pages/404';
 import { Bag } from '../pages/Bag';
+import { Checkout } from '../pages/Checkout';
 
 export const Routes: React.FC = () => {
 
@@ -26,7 +27,8 @@ export const Routes: React.FC = () => {
                             <Route element={<Category />} path="/category/:category" />
                             <Route element={<Product />} path="/category/:category/:productId" />
                             <Route element={<Bag />} path="/cart" />
-                        <Route path="*" element={<Page404 />} />  
+                            <Route element={<Checkout />} path="/checkout" />
+                            <Route element={<Page404 />} path="*" />  
                         </Switch>
                         <FooterDesktop />
                     </ViewportProvider>
