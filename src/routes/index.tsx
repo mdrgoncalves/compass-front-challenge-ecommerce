@@ -13,13 +13,15 @@ import { FooterDesktop } from '../components/Desktop/FooterDesktop';
 import { Page404 } from '../pages/404';
 import { Bag } from '../pages/Bag';
 import { Checkout } from '../pages/Checkout';
+import CouponProvider from '../context/CouponContext';
 
 export const Routes: React.FC = () => {
 
     return (
+        
         <ProductProvider>
-            <ProductProvider>
-            <BagProvider>
+            <CouponProvider>
+                <BagProvider>
                     <ViewportProvider>
                         <HeaderDesktop />
                         <Switch>
@@ -33,7 +35,7 @@ export const Routes: React.FC = () => {
                         <FooterDesktop />
                     </ViewportProvider>
                 </BagProvider>
-        </ProductProvider>
+            </CouponProvider>
         </ProductProvider>
     )
 }
