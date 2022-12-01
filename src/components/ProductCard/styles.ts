@@ -16,6 +16,7 @@ export const ProductPicture = styled.picture`
 
     img {
         width: 136px;
+        height: 138px;
 
         @media (min-width: 985px) {
             height: 286px;

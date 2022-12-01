@@ -1,27 +1,29 @@
-import productsData from "../../data/productsData";
-
+import { ProductState } from "../../context/ProductContext";
+import { IProduct } from "../../types/Products";
 import { Carousel } from "../Carousel";
 import { ProductCard } from "../ProductCard";
 
 export const ProductsCarousel: React.FC = () => {
 
-    const products = productsData.map(product => {
+    const { products } = ProductState();
+
+    const productsList = products.map((product: IProduct) => {
         return (
             <ProductCard 
-                key={product.id}
-                category={product.category}
-                imgSrc={product.img}
-                id={product.id}
-                title={product.name}
-                desc={product.description}
-                price={product.price}
+                key={product._id}
+                category={product.productCategory}
+                imgSrc={product.productImage}
+                id={product._id}
+                title={product.productName}
+                desc={product.productDescription}
+                price={product.productPrice}
             />
         )
     })
 
     return (
         <Carousel>
-            {products}
+            {productsList}
         </Carousel>
     );  
 };

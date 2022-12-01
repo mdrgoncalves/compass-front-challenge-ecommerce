@@ -15,10 +15,10 @@ import {
 interface ProductCardProps {
     category: string;
     imgSrc: string;
-    id: number;
+    id: string;
     title: string;
     desc: string;
-    price: string;
+    price: number;
 }
 
 export const ProductCard = ({
