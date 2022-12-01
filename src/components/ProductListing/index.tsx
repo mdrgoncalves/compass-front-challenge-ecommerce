@@ -26,10 +26,31 @@ export const ProductListing: React.FC = () => {
         getProductsByCategory(category);
     }, [category]);
 
+    // Define list according to sort
+    const [sortState, setSortState] = useState('position');
+
+    useEffect(() => {
+        switch (sortState) {
+            case 'price': 
+                productsList.sort((a: IProduct, b: IProduct) => a.productPrice - b.productPrice);
+                break;
+            case 'name':
+                productsList.sort((a: IProduct, b: IProduct) => a.productName.localeCompare(b.productName));
+                break;
+            case 'position':
+                productsList.sort((a: IProduct, b: IProduct) => a._id.localeCompare(b._id));
+                break;
+        }
+    }, [sortState]);
+
     // Get Current Product
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = productsList.slice(indexOfFirstProduct, indexOfLastProduct);
+    const [currentProducts, setCurrentProducts] = useState([])
+
+    useEffect(() => {
+        setCurrentProducts(productsList.slice(indexOfFirstProduct, indexOfLastProduct));
+    }, [currentPage, productsPerPage, productsList, indexOfFirstProduct, indexOfLastProduct, sortState]);
 
     // Change Page
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
@@ -91,6 +112,7 @@ export const ProductListing: React.FC = () => {
                         indexOfLastProduct={indexOfLastProduct}
                         totalProducts={productsList.length}
                         setProductsPerPage={setProductsPerPage}
+                        setSortState={setSortState}
                     />
                     <ProductsGrid>
                         {currentProducts.map((product: IProduct) => {

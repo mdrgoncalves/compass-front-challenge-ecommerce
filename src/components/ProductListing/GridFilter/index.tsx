@@ -12,15 +12,18 @@ interface GridFilterProps {
     indexOfLastProduct: number;
     totalProducts: number;
     setProductsPerPage: React.Dispatch<React.SetStateAction<number>>;
+    setSortState: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const GridFilter: React.FC<GridFilterProps> = ({
     indexOfFirstProduct,
     indexOfLastProduct,
     totalProducts,
-    setProductsPerPage
+    setProductsPerPage,
+    setSortState
 }) => {
 
+    // Number of products shown
     const [number, setNumber] = useState(9);
 
     const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,6 +34,15 @@ export const GridFilter: React.FC<GridFilterProps> = ({
         } 
     }
 
+    // Setting sort
+    const [sort, setSort] = useState('position');
+
+    const sortHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const value = event.target.value;
+        setSort(value);
+        setSortState(value);
+    }
+    
     return (
 
         <GridFilterContainer>
@@ -50,17 +62,21 @@ export const GridFilter: React.FC<GridFilterProps> = ({
             <FlexContainer>
                 <p>To Show:</p>
                 <NumberInput 
-                    type="number" 
+                    type='number' 
                     value={number}
                     onChange={(event) => inputHandler(event)}
                 />
             </FlexContainer>
             <FlexContainer>
                 <p>Sort By</p>
-                <SortInput>
-                    <option value="price">Price</option>
-                    <option value="name">Name</option>
-                    <option value="name" selected>Position</option>
+                <SortInput 
+                    name='sort' 
+                    value={sort}
+                    onChange={(event) => sortHandler(event)}
+                >
+                    <option value='price'>Price</option>
+                    <option value='name'>Name</option>
+                    <option value='position'>Position</option>
                 </SortInput>
             </FlexContainer>
         </GridFilterContainer>
