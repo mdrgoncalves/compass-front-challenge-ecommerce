@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { 
     FlexContainer, 
     GridFilterContainer, 
@@ -10,15 +11,28 @@ interface GridFilterProps {
     indexOfFirstProduct: number;
     indexOfLastProduct: number;
     totalProducts: number;
+    setProductsPerPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const GridFilter: React.FC<GridFilterProps> = ({
     indexOfFirstProduct,
     indexOfLastProduct,
-    totalProducts
+    totalProducts,
+    setProductsPerPage
 }) => {
 
+    const [number, setNumber] = useState(9);
+
+    const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = Number(event.target.value);
+        if (!(value > 9) && !(value < 3)) {
+            setNumber(value);
+            setProductsPerPage(value);
+        } 
+    }
+
     return (
+
         <GridFilterContainer>
             <ShowFilterContainer>
                 <div>
@@ -35,7 +49,11 @@ export const GridFilter: React.FC<GridFilterProps> = ({
             </ShowFilterContainer>
             <FlexContainer>
                 <p>To Show:</p>
-                <NumberInput type="number" value={9}/>
+                <NumberInput 
+                    type="number" 
+                    value={number}
+                    onChange={(event) => inputHandler(event)}
+                />
             </FlexContainer>
             <FlexContainer>
                 <p>Sort By</p>

@@ -16,7 +16,7 @@ export const ProductListing: React.FC = () => {
 
     // Set Pagination
     const [currentPage, setCurrentPage] = useState(1);
-    const [productsPerPage] = useState(9);
+    const [productsPerPage, setProductsPerPage] = useState(9);
 
     // Get Products List according to Category
     const { getProductsByCategory, categoryProducts } = ProductState();
@@ -90,6 +90,7 @@ export const ProductListing: React.FC = () => {
                         indexOfFirstProduct={indexOfFirstProduct}
                         indexOfLastProduct={indexOfLastProduct}
                         totalProducts={productsList.length}
+                        setProductsPerPage={setProductsPerPage}
                     />
                     <ProductsGrid>
                         {currentProducts.map((product: IProduct) => {
