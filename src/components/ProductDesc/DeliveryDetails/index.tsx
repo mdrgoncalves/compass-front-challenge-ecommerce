@@ -1,4 +1,4 @@
-import { PincodeInput } from "./PincodeInput";
+import { CouponInput } from "../../CouponInput";
 import { DeliveryContainer, DeliveryText } from "./styles";
 
 export const DeliveryDetails: React.FC = () => {
@@ -10,7 +10,7 @@ export const DeliveryDetails: React.FC = () => {
                 <p className='title'>Delivery Details</p>
                 <p className='desc'>Check estimated delivery date/pickup option.</p>
             </DeliveryText>
-            <PincodeInput 
+            <CouponInput 
                 placeholder='Apply Valid Pincode'
             />
         </DeliveryContainer>

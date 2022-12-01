@@ -2,7 +2,7 @@ import { BagDisplay } from "../../components/BagDisplay";
 import { CollapseButtonDesktop } from "../../components/Desktop/CollapseButtonDesktop";
 import { PageHeader } from "../../components/Desktop/PageHeader";
 import { OrderSummary } from "../../components/OrderSummary";
-import { PincodeInput } from "../../components/ProductDesc/DeliveryDetails/PincodeInput";
+import { CouponInput } from "../../components/CouponInput";
 import { BagContainer, BagContent } from "./styles";
 
 export const Bag: React.FC = () => {
@@ -18,7 +18,7 @@ export const Bag: React.FC = () => {
                     <BagDisplay />
                     <CollapseButtonDesktop label='Apply Coupon Code' >
                         <div className='collapse-children'>
-                            <PincodeInput placeholder='Apply Coupon Code' />
+                            <CouponInput placeholder='Apply Coupon Code' />
                         </div>
                     </CollapseButtonDesktop>
                 </div>

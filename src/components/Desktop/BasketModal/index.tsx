@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { BagState } from "../../../context/BagContext";
 import { IProduct } from "../../../types/Products";
 import { Button } from "../../Button";
-import { PincodeInput } from "../../ProductDesc/DeliveryDetails/PincodeInput";
+import { CouponInput } from "../../CouponInput";
 import { ProductBagDisplay } from "./ProductBagDisplay";
 import { 
     CloseContainer, 
@@ -106,7 +106,7 @@ export const BasketModal: React.FC<ModalProps> = ({
                     </p>
                 </TotalContainer>
                 <CouponContainer>
-                    <PincodeInput placeholder='Apply Coupon Code' />
+                    <CouponInput placeholder='Apply Coupon Code' />
                 </CouponContainer>
                 <ButtonContainer>
                     <Button 
