@@ -17,11 +17,13 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({
 
     const navigate = useNavigate();
 
-    const { state: { bag } } = BagState();
-
-    const subTotal = bag.reduce((acc: number, item: IProduct) => acc + (item.productPrice * item.productQuantity), 0);
-    const itemQuantity = bag.reduce((acc: number, item: IProduct) => acc + item.productQuantity, 0);
-    const grandTotal = subTotal + itemQuantity;
+    const { 
+        state: { bag }, 
+        subTotal, 
+        itemQuantity, 
+        grandTotal,
+        discount
+    } = BagState();
 
     return (
         
@@ -52,7 +54,7 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({
                 </p>
                 <p>
                     <SummaryLabel>Discount</SummaryLabel>
-                    <span>-$0.00</span>
+                    <span>-${discount.toFixed(2)}</span>
                 </p>
                 <p>
                     <SummaryLabel>Delivery Fee</SummaryLabel>
