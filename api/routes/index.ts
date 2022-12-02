@@ -1,6 +1,7 @@
 import { Router } from "express";
 import CouponController from "../controllers/CouponController.js";
 import ProductController from "../controllers/ProductController.js";
+import RatingController from "../controllers/RatingController.js";
 import UserController from "../controllers/UserController.js";
 import WishlistController from "../controllers/WishlistController.js";
 
@@ -51,5 +52,15 @@ routes.get('/coupons/:coupon_id', CouponController.getCouponById);
 // Desactivate coupon
 routes.put('/coupons/:coupon_id', CouponController.desactivateCoupon);
 
+// Create rating
+routes.post('/ratings', RatingController.createRating);
+// List ratings
+routes.get('/ratings', RatingController.getRatings);
+// List rating by id
+routes.get('/ratings/:rating_id', RatingController.getRatingById);
+// List ratings by product
+routes.get('/ratings/product/:product_id', RatingController.getRatingsByProduct);
+// List ratings by user
+routes.get('/ratings/user/:user_id', RatingController.getRatingsByUser);
 
 export default routes;
