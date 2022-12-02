@@ -25,9 +25,7 @@ import { IProduct } from "../../types/Products";
 export const Product: React.FC = () => {
 
     const { productId } = useParams<{ productId: string }>();
-
     const { getProductById, product } = ProductState();
-
     const [thisProduct, setThisProduct] = useState({} as IProduct);
 
     useEffect(() => {
@@ -38,6 +36,10 @@ export const Product: React.FC = () => {
         setThisProduct(product);
     }, [product]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const { 
         _id,
         productName, 
@@ -46,7 +48,7 @@ export const Product: React.FC = () => {
         productPrice,
         productCategory 
     } = thisProduct;
-    const images = [productImage, productImage, productImage];
+    const images = [productImage, productImage, productImage, productImage];
 
     return (
 
@@ -61,7 +63,9 @@ export const Product: React.FC = () => {
                 <ProductCarousel
                     images={images}
                 />
-                <ProductSlider />
+                <ProductSlider 
+                    productImages={images}
+                />
             </div>
             <div className='desc'>
                 <ProductDesc 

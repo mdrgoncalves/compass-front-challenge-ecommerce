@@ -1,16 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BigImage, SliderContainer, Thumbnail, ThumbsContainer } from "./styles";
 
-export const ProductSlider: React.FC = () => {
+interface ProductSliderProps {
+    productImages: string[];
+}
+
+export const ProductSlider: React.FC<ProductSliderProps> = ({
+    productImages
+}) => {
 
     const images = [
-        {id:0, value:'/assets/img/products/grande-bag.png'},
-        {id:1, value:'/assets/img/products/coach-bag.png'},
-        {id:2, value:'/assets/img/products/boujee-bag.png'},
-        {id:3, value:'/assets/img/products/remus-bag.png'},
+        {
+            id: 0, 
+            value: productImages[0]
+        },
+        {
+            id:1, 
+            value: productImages[1]
+        },
+        {
+            id:2, 
+            value: productImages[2]
+        },
+        {
+            id:3, 
+            value: productImages[3]
+        },
     ];
 
     const [image, setImage] = useState(images[0]);
+
+    useEffect(() => {
+        setImage(images[0]);
+    }, [productImages]);
 
     const handleClick = (index: number) => {
         const sliderImg = images[index];
