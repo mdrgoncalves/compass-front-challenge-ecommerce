@@ -8,6 +8,7 @@ const ProductProvider = ({ children }: any) => {
     const [products, setProducts] = useState([]);
     const [categoryProducts, setCategoryProducts] = useState([]);
     const [product, setProduct] = useState({});
+    const [productReviews, setProductReviews] = useState([]);
     
     // Get All Products
     const getProducts = async () => {
@@ -42,6 +43,26 @@ const ProductProvider = ({ children }: any) => {
         }
     }
     
+    // Get Ratings by Product
+    const getRatingsByProduct = async (id: string) => {
+
+        try {
+            const { data } = await api.get(`/ratings/product/${id}`);
+            setProductReviews(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Add Rating
+    const addRating = async (rating: any) => {
+
+        try {
+            await api.post("/ratings", rating);
+        } catch (error) {
+            console.error(error);
+        }
+    }
     
     return (
         <ProductContext.Provider value={{ 
@@ -50,7 +71,10 @@ const ProductProvider = ({ children }: any) => {
             getProductById,
             product,
             getProductsByCategory,
-            categoryProducts
+            categoryProducts,
+            getRatingsByProduct,
+            productReviews,
+            addRating
         }}>
                 {children}
         </ProductContext.Provider>
