@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { ProductsCarousel } from "../../ProductsCarousel";
+import { RatingsSection } from "../../RatingsSection";
 import { DescriptionTab } from "./DescriptionTab";
 import { TabsContainer, TabsNav } from "./styles";
 
-export const ProductTabs: React.FC = () => {
+interface ProductTabsProps {
+    productId: string;
+}
+
+export const ProductTabs: React.FC<ProductTabsProps> = ({
+    productId
+}) => {
 
     const [activeTab, setActiveTab] = useState('tab1');
 
@@ -36,7 +43,7 @@ export const ProductTabs: React.FC = () => {
             <div>
                 {activeTab === 'tab1' && <DescriptionTab /> }
                 {activeTab === 'tab2' && <ProductsCarousel />}
-                {activeTab === 'tab3' && <DescriptionTab />}
+                {activeTab === 'tab3' && <RatingsSection productId={productId} />}
             </div>
         </TabsContainer>
     );  

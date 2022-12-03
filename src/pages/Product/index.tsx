@@ -82,7 +82,7 @@ export const Product: React.FC = () => {
                 </div>
             </div>
             <div className='tabs'>
-                <ProductTabs /> 
+                <ProductTabs productId={_id} /> 
             </div>
 
             {useWidth({
