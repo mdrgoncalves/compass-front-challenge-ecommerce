@@ -25,17 +25,17 @@ const BagProvider = ({ children }: any) => {
     const [itemQuantity, setItemQuantity] = useState(0);
     const [grandTotal, setGrandTotal] = useState(0);
     const [discount, setDiscount] = useState(0);
-
+    
     useEffect(() => {
-        const subTotal = Number(bag.reduce((acc: number, item: any) => acc + (item.productPrice * item.productQuantity), 0));
+        const subTotal = Number(state.bag.reduce((acc: number, item: any) => acc + (item.productPrice * item.productQuantity), 0));
         setSubTotal(subTotal);
         const discount = Number((subTotal * discountPercent) / 100);
         setDiscount(discount);
-        const itemQuantity = Number(bag.reduce((acc: number, item: any) => acc + item.productQuantity, 0));
+        const itemQuantity = Number(state.bag.reduce((acc: number, item: any) => acc + item.productQuantity, 0));
         setItemQuantity(itemQuantity);
         const grandTotal = subTotal + itemQuantity - discount;
         setGrandTotal(grandTotal);
-    }, [bagQuantity, discountPercent]);
+    }, [state.bag, discountPercent, bagQuantity]);
 
     return (
         <BagContext.Provider value={{ 
