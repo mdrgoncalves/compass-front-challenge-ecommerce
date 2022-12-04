@@ -32,7 +32,7 @@ class RatingController {
         const id = req.params.rating_id;
 
         try {
-            const ratingById = await rating.findById(id);
+            const ratingById = await rating.findById(id).populate('username');
             return res.status(200).json(ratingById);
         } catch (error) {
             return res.status(400).
