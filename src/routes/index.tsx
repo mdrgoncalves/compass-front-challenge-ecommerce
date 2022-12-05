@@ -15,6 +15,7 @@ import { Bag } from '../pages/Bag';
 import { Checkout } from '../pages/Checkout';
 import CouponProvider from '../context/CouponContext';
 import UserProvider from '../context/UserContex';
+import { OrderConfirmed } from '../pages/OrderConfirmed';
 
 export const Routes: React.FC = () => {
 
@@ -32,6 +33,7 @@ export const Routes: React.FC = () => {
                 <Route element={<Product />} path="/category/:category/:productId" />
                 <Route element={<Bag />} path="/cart" />
                 <Route element={<Checkout />} path="/checkout" />
+                <Route element={<OrderConfirmed />} path="/confirmed" />
                 <Route element={<Page404 />} path="*" />  
             </Switch>
             <FooterDesktop />
