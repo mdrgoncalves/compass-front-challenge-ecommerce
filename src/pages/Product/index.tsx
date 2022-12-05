@@ -20,6 +20,7 @@ import { AddToBagButton } from "../../components/AddToBagButton";
 import { ProductState } from "../../context/ProductContext";
 import { useEffect, useState } from "react";
 import { IProduct } from "../../types/Products";
+import { AddToWishlistButton } from "../../components/AddToWishlistButton";
 
 
 export const Product: React.FC = () => {
@@ -76,9 +77,10 @@ export const Product: React.FC = () => {
                 />
                 <div className='desc__buttons'>
                     <AddToBagButton product={thisProduct} />
-                    <Button color='secondary' iconType='wishlist'>
-                        Add To Wishlist
-                    </Button>
+                    <AddToWishlistButton
+                        productId={_id}
+                        buttonType='full'
+                    />
                 </div>
             </div>
             <div className='tabs'>

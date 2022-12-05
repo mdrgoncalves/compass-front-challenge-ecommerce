@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { AddToWishlistButton } from "../../AddToWishlistButton";
 import { CartProductCard } from "../../CartProductCard";
 import { 
     TableItem, 
@@ -8,6 +8,7 @@ import {
 } from "./styles"
 
 interface BagDisplayCardProps {
+    productId: string;
     imgSrc: string;
     name: string;
     description: string;
@@ -16,6 +17,7 @@ interface BagDisplayCardProps {
 };
 
 export const BagDisplayCard: React.FC<BagDisplayCardProps> = ({
+    productId,
     imgSrc,
     name,
     description,
@@ -39,8 +41,13 @@ export const BagDisplayCard: React.FC<BagDisplayCardProps> = ({
                         <span>${(price * quantity).toFixed(2)}</span>
                     </TableItemPrices>
                     <TableItemButtons>
-                        <Link to='/404'>Move to Wishlist</Link>
-                        <button>Remove</button>
+                        <AddToWishlistButton
+                            productId={productId}
+                            buttonType='text'
+                        />
+                        <button className='remove'>
+                            Remove
+                        </button>
                     </TableItemButtons>
                 </TableItemValues>
             </TableItem>

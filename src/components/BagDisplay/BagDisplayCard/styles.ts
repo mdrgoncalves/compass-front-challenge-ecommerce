@@ -28,17 +28,13 @@ export const TableItemButtons = styled.div`
     gap: 56px;
     margin-left: 12px;
 
-    a, button {
+    button {
         font-size: 0.875rem;
         font-weight: 600;
         text-decoration: underline;
     }
 
-    a {
-        color: var(--color-primary);
-    }
-
-    button {
+    .remove {
         color: var(--color-error);
         background: none;
         border: none;

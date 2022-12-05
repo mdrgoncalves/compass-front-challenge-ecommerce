@@ -21,6 +21,7 @@ export const BagDisplay: React.FC = () => {
             {bag.map((item: IProduct) => (
                 <BagDisplayCard
                     key={item._id}
+                    productId={item._id}
                     imgSrc={item.productImage}
                     name={item.productName}
                     description={item.productDescription}

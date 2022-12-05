@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-
-import { IconButton } from "../IconButton"
+import { AddToWishlistButton } from "../AddToWishlistButton";
 
 import { 
     ProductContainer, 
@@ -43,7 +42,10 @@ export const ProductCard = ({
                     <ProductDesc>{desc}</ProductDesc>
                     <ProductPrice>{price}</ProductPrice>
                 </ProductText>
-                <IconButton iconSrc='/assets/img/wishlist-icon.svg' alt='favorite product'/>
+                <AddToWishlistButton 
+                    productId={id}
+                    buttonType='icon'
+                />
             </ProductContent>
         </ProductContainer>
     )
