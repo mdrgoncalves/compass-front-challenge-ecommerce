@@ -1,9 +1,11 @@
 import { ButtonWrap, CrossImg } from "./styles";
 
 interface ButtonProps {
-    children: string;
+    children: React.ReactNode;
     color: 'primary' | 'secondary' | 'remove';
     iconType?: 'bag' | 'wishlist' | 'cross';
+    type?:  'button' | 'submit' | 'reset';
+    form?: string;
     onClick?: () => void;
 }
 
@@ -11,6 +13,8 @@ export const Button: React.FC<ButtonProps> = ({
     children,
     color,
     iconType,
+    type = 'button',
+    form,
     onClick
 }) => {
 
@@ -18,6 +22,8 @@ export const Button: React.FC<ButtonProps> = ({
         <ButtonWrap 
             color={color}
             onClick={onClick}
+            type={type}
+            form={form}
         >
             {iconType === 'bag' && <img src='/assets/img/bag-icon-light.svg' alt='bag' />}
             {iconType === 'wishlist' && <img src='/assets/img/wishlist-icon.svg' alt='wishlist' />}

@@ -1,23 +1,92 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import mongoose from "mongoose";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { CheckoutForm } from "../../components/CheckoutForm";
 import { CollapseButtonDesktop } from "../../components/Desktop/CollapseButtonDesktop";
 import { PageHeader } from "../../components/Desktop/PageHeader";
 import { OrderSummary } from "../../components/OrderSummary";
 import { PaymentSection } from "../../components/PaymentSection";
+import { UserState } from "../../context/UserContex";
 import { 
     ButtonWrapper, 
     CheckoutContainer, 
     CheckoutContent, 
     RightContainer 
 } from "./styles";
+import { BagState } from "../../context/BagContext";
+import { IProduct } from "../../types/Products";
 
 export const Checkout: React.FC = () => {
 
     const [cardNumber, setCardNumber] = useState(0);
     const [cardDate, setCardDate] = useState('');
     const [cardCvv, setCardCvv] = useState(0);
+    const [addressId, setAddressId] = useState('');
+    const [trigger, setTrigger] = useState(0);
+    const [actived, setActived] = useState(false);
+
+    const navigate = useNavigate();
+
+    const { userId, createPayment, createOrder } = UserState();
+    const { state: { bag }, grandTotal } = BagState();
+    
+    let paymentId: string;
+
+    const postPayment = () => {
+        
+        const id = new mongoose.Types.ObjectId();
+        paymentId = id.toString();
+
+        const payment = {
+            "_id": id,
+            "cardNumber": cardNumber,
+            "expirationDate": cardDate,
+            "cvc": cardCvv,
+            "user": userId
+        }
+
+        createPayment(payment);
+    }
+
+    const postOrder = () => {
+
+        const today = new Date();
+        const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+        const order = {
+            "user": userId,
+            "payment": paymentId,
+            "address": addressId,
+            "orderItems": 
+                bag.map((product: IProduct) => {
+                    return {
+                        "product": product._id,
+                        "quantity": product.productQuantity,
+                        "price": product.productPrice
+                    }
+                }),
+            "totalPrice": grandTotal,
+            "date": date,
+            "status": 'paid'
+        }
+
+        createOrder(order);
+    }
+
+    const clickHandler = () => {
+        setTrigger(trigger => trigger + 1);
+        setActived(true);
+    }
+
+    useEffect(() => {
+        if (actived) {
+            postPayment();
+            postOrder();
+            navigate('/confirmed');
+            setActived(false);
+        }
+    }, [addressId]);
 
     return (
         
@@ -29,7 +98,10 @@ export const Checkout: React.FC = () => {
             <CheckoutContent>
                 <RightContainer>
                     <CollapseButtonDesktop label='Add New Address'>
-                        <CheckoutForm />
+                        <CheckoutForm 
+                            setAddressId={setAddressId}
+                            trigger={trigger}
+                        />
                     </CollapseButtonDesktop>
                     <CollapseButtonDesktop label='Select Payment Method'>
                         <PaymentSection
@@ -44,8 +116,10 @@ export const Checkout: React.FC = () => {
             <ButtonWrapper>
                 <Link to='/cart'>Back to Cart</Link>
                 <Button 
+                    type='submit'
+                    form='checkout'
                     color='primary'
-                    onClick={() => console.log(cardNumber, cardDate, cardCvv)}
+                    onClick={() => clickHandler()}
                 >
                     Place Order
                 </Button>
