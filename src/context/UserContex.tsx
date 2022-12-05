@@ -67,6 +67,36 @@ const UserProvider = ({ children }: any) => {
         }
     }
 
+    // Create Address 
+    const createAddress = async (body: any) => {
+
+        try {
+            await api.post(`/address`, body);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Create Payment
+    const createPayment = async (body: any) => {
+
+        try {
+            await api.post(`/payments`, body);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Create Order
+    const createOrder = async (body: any) => {
+
+        try {
+            await api.post(`/orders`, body);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
         <UserContext.Provider value={{ 
             userId,
@@ -75,7 +105,10 @@ const UserProvider = ({ children }: any) => {
             getWishlist,
             wishlist,
             createOrUpdateWishlist,
-            removeProductOfWishlist
+            removeProductOfWishlist,
+            createAddress,
+            createPayment,
+            createOrder
         }}>
             {children}
         </UserContext.Provider>
