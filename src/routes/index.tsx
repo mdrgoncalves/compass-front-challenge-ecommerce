@@ -14,28 +14,31 @@ import { Page404 } from '../pages/404';
 import { Bag } from '../pages/Bag';
 import { Checkout } from '../pages/Checkout';
 import CouponProvider from '../context/CouponContext';
+import UserProvider from '../context/UserContex';
 
 export const Routes: React.FC = () => {
 
     return (
         
+        <UserProvider>
         <ProductProvider>
-            <CouponProvider>
-                <BagProvider>
-                    <ViewportProvider>
-                        <HeaderDesktop />
-                        <Switch>
-                            <Route element={<Home />} path="/" />
-                            <Route element={<Category />} path="/category/:category" />
-                            <Route element={<Product />} path="/category/:category/:productId" />
-                            <Route element={<Bag />} path="/cart" />
-                            <Route element={<Checkout />} path="/checkout" />
-                            <Route element={<Page404 />} path="*" />  
-                        </Switch>
-                        <FooterDesktop />
-                    </ViewportProvider>
-                </BagProvider>
-            </CouponProvider>
+        <CouponProvider>
+        <BagProvider>
+        <ViewportProvider>
+            <HeaderDesktop />
+            <Switch>
+                <Route element={<Home />} path="/" />
+                <Route element={<Category />} path="/category/:category" />
+                <Route element={<Product />} path="/category/:category/:productId" />
+                <Route element={<Bag />} path="/cart" />
+                <Route element={<Checkout />} path="/checkout" />
+                <Route element={<Page404 />} path="*" />  
+            </Switch>
+            <FooterDesktop />
+        </ViewportProvider>
+        </BagProvider>
+        </CouponProvider>
         </ProductProvider>
+        </UserProvider>
     )
 }
