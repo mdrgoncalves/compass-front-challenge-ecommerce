@@ -49,6 +49,12 @@ Install dependencies
 npm install  
 ```
 
+Run local server for API (http://localhost:3333/)
+
+```bash 
+npm run server
+```
+
 Run application in developer mode
 
 ```bash 
