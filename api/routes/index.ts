@@ -77,17 +77,17 @@ routes.get('/address/:address_id', AddressController.getAddress);
 routes.get('/address/user/:user_id', AddressController.getAddressByUser);
 
 // Create Payment
-routes.post('/payment', PaymentController.createPayment);
+routes.post('/payments', PaymentController.createPayment);
 // List Payment
-routes.get('/payment/:payment_id', PaymentController.getPayment);
+routes.get('/payments/:payment_id', PaymentController.getPayment);
 // List Payments by User
-routes.get('/payment/user/:user_id', PaymentController.getPaymentsByUser);
+routes.get('/payments/user/:user_id', PaymentController.getPaymentsByUser);
 
 // Create Order
-routes.post('/order', OrderController.createOrder);
+routes.post('/orders', OrderController.createOrder);
 // List Order
-routes.get('/order/:order_id', OrderController.getOrder);
+routes.get('/orders/:order_id', OrderController.getOrder);
 // List Orders by User
-routes.get('/order/user/:user_id', OrderController.getOrdersByUser);
+routes.get('/orders/user/:user_id', OrderController.getOrdersByUser);
 
 export default routes;

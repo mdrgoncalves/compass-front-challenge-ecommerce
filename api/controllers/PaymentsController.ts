@@ -11,6 +11,7 @@ class PaymentController {
             const newPayment = await payment.create(bodyData);
             return res.status(201).json(newPayment);
         } catch (error) {
+            console.log(error)
             return res.status(400).
                 json({ message: 'Payment creation was unsuccessful' });
         }

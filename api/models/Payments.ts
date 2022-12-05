@@ -8,7 +8,8 @@ const PaymentSchema = new mongoose.Schema(
         expirationDate: {type: String, required: true},
         cvc: {type: String, required: true},
         user: {type: mongoose.Schema.Types.ObjectId, ref: 'user'}
-    }
+    },
+    { _id: false }
 );
 
 PaymentSchema.pre('save', async function (next) {
