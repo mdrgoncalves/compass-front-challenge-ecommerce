@@ -1,11 +1,36 @@
 import axios from 'axios';
-import { useState } from 'react';
+import mongoose from 'mongoose';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { UserState } from '../../context/UserContex';
+import { IForm } from '../../types/Form';
 import { CheckForm, InputsWrapper, InputsWrapperRight, NumberLabel } from './styles';
 
-export const CheckoutForm: React.FC = () => {
+interface CheckoutFormProps {
+    setAddressId: (addressId: string) => void;
+    trigger: number;
+};
 
-    const { register, handleSubmit } = useForm();
+export const CheckoutForm: React.FC<CheckoutFormProps> = ({
+    setAddressId,
+    trigger
+}) => {
+
+    const { userId, createAddress } = UserState();
+
+    const setValues = () => {
+        setValue('streetAddress', street);
+        setValue('stateAddress', state);
+        setValue('cityAddress', city);
+    }
+
+    useEffect(() => {
+        if (trigger) {
+            setValues();
+        }
+    }, [trigger]);
+
+    const { register, handleSubmit, setValue } = useForm();
 
     const [street, setStreet] = useState('');
     const [state, setState] = useState('');
@@ -23,6 +48,25 @@ export const CheckoutForm: React.FC = () => {
         );
     }
 
+    const onSubmit = (data: IForm) => {
+        
+        const id = new mongoose.Types.ObjectId();
+
+        const address = {
+            "_id": id,
+            "fullName": data.fullName,
+            "mobileNumber": data.mobileNumber,
+            "street": data.streetAddress,
+            "state": data.stateAddress,
+            "city": data.cityAddress,
+            "pincode": data.pinCode,
+            "user": userId
+        }
+
+        setAddressId(id.toString());
+        createAddress(address);
+    }
+
     const pinCodeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         const value = event.target.value;
@@ -33,7 +77,7 @@ export const CheckoutForm: React.FC = () => {
 
         if (event.target.value.length > 8) {
             const value = event.target.value.replace('-', '');
-            searchAddress(value);     
+            searchAddress(value);
         }
     }
 
@@ -41,7 +85,7 @@ export const CheckoutForm: React.FC = () => {
         
         <CheckForm 
             id='checkout' 
-            onSubmit={handleSubmit((data) => { console.log(data) } )}
+            onSubmit={handleSubmit((data: any) => onSubmit(data))}
         >
             <InputsWrapper>
                 <label htmlFor='fullName'>
