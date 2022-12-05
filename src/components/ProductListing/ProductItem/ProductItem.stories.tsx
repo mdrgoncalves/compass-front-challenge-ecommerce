@@ -13,8 +13,8 @@ export const PaginationItem = Template.bind({});
 PaginationItem.args = {
     category: 'category',
     imgSrc: '/assets/img/products/boujee-bag.png',
-    id: 1,
+    id: '1',
     title: 'Product Title',
     desc: 'Product Description',
-    price: '$100,00'
+    price: 100.00
 };

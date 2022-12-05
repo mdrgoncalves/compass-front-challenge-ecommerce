@@ -14,6 +14,6 @@ BagCard.args = {
     imgSrc: 'https://via.placeholder.com/150',
     title: 'Product Title',
     description: 'Product Description',
-    price: '$100,00',
+    price: 100.00,
     onClick: () => console.log('test')
 };
