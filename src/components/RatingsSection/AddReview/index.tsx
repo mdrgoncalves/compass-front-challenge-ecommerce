@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ProductState } from "../../../context/ProductContext";
+import { UserState } from "../../../context/UserContex";
 import { Button } from "../../Button";
 import { StarRating } from "../StarRating";
 import { PostReviewContainer, PostReviewContent } from "./styles";
@@ -13,6 +14,7 @@ export const AddReview: React.FC<AddReviewProps> = ({
 }) => {
 
     const { addRating } = ProductState();
+    const { userId } = UserState();
 
     const [rating, setRating] = useState(1);
     const [commentTitle, setCommentTitle] = useState('');
@@ -31,7 +33,7 @@ export const AddReview: React.FC<AddReviewProps> = ({
         
         const data = {
             "rating": rating,
-            "username": "6382e7cfb066a32b381fdb0f",
+            "username": userId,
             "date": today,
             "product": productId,
             "commentTitle": commentTitle,

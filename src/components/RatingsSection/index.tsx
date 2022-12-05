@@ -73,8 +73,8 @@ export const RatingsSection: React.FC<RatingsSectionProps> = ({
                     <RatingCard 
                         key={review._id}
                         rating={review.rating}
-                        userName={review.username}
-                        date={review.date}
+                        userName={review.username.firstName + ' ' + review.username.lastName}
+                        date={review.date.split('T')[0]}
                         commentTitle={review.commentTitle}
                         comment={review.comment}
                     />

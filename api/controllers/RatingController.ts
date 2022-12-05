@@ -19,7 +19,7 @@ class RatingController {
     static async getRatings(req: Request, res: Response) {
 
         try {
-            const allRatings = await rating.find();
+            const allRatings = await rating.find().populate('username');
             return res.status(200).json(allRatings);
         } catch (error) {
             return res.status(400).
@@ -45,7 +45,7 @@ class RatingController {
         const id = req.params.product_id;
 
         try {
-            const ratingByProduct = await rating.find({ product: id });
+            const ratingByProduct = await rating.find({ product: id }).populate('username');
             return res.status(200).json(ratingByProduct);
         } catch (error) {
             return res.status(400).
