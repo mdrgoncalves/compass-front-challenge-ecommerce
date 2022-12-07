@@ -1,14 +1,43 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { IProduct } from "../types/Products";
+import mongoose from "mongoose";
+import { createContext, useContext, useState } from "react";
 import { api } from "../utils/api";
 
 export const UserContext = createContext({} as any);
 
 const UserProvider = ({ children }: any) => {
 
-    const [userId] = useState('638c11805dab33fd788dde32');
+    const [userId, setUserId] = useState('638c11805dab33fd788dde32');
     const [user, setUser] = useState({});
     const [wishlist, setWishlist] = useState({});
+
+    // Create User
+    const createUser = async (body: any) => {
+
+        const id = new mongoose.Types.ObjectId();
+        setUserId(id.toString());
+        
+        try {
+            await api.post(`/users`, 
+                {
+                    "_id": id,
+                    "mobileNumber": body.mobileNumber,
+                    "password": "admin"
+                }
+            );
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Update User
+    const updateUser = async (body: any) => {
+
+        try {
+            await api.put(`/users/${userId}`, body);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     // Get User by ID
     const getUser = async () => {
@@ -99,6 +128,8 @@ const UserProvider = ({ children }: any) => {
 
     return (
         <UserContext.Provider value={{ 
+            createUser,
+            updateUser,
             userId,
             getUser,
             user,
