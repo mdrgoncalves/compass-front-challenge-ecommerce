@@ -6,7 +6,7 @@ interface ICategories {
 }
 
 interface MenuListProps {
-    title: string;
+    title?: string;
     labelList: ICategories; 
 }
 
@@ -18,7 +18,10 @@ export const MenuList: React.FC<MenuListProps> = ({
     return (
 
         <MenuNav>
-            <h2>{title}</h2>
+            {title 
+                ? <h2>{title}</h2>
+                : null
+            }
             <ul>
                 {Object.keys(labelList).map(label => {
                     return (
