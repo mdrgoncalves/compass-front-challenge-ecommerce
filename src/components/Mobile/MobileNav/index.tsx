@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { MobileNavContainer, NavItem } from "./styles";
 
 export const MobileNav: React.FC = () => {
 
     const [activeButton, setActiveButton] = useState('home');
 
-    const handleButtonClick = (button: string) => {
-        setActiveButton(button);
-    }
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.pathname === '/home') {
+            setActiveButton('home');
+        } else if (location.pathname === '/category/handbags') {
+            setActiveButton('categories');
+        } else if (location.pathname === '/profile') {
+            setActiveButton('profile');
+        }
+    }, [location.pathname]);
 
     return (
         
@@ -15,11 +24,10 @@ export const MobileNav: React.FC = () => {
             <MobileNavContainer>
                 <li>
                     <NavItem 
-                        to='/'
+                        to='/home'
                         className={({ isActive }) => 
                             isActive ? 'active' : ''
                         }
-                        onClick={() => handleButtonClick('home')}
                     >
                         <img src='/assets/img/icons/home-inative-icon.svg' alt='home icon' />
                         {activeButton === 'home' && <p>Home</p>}
@@ -31,7 +39,6 @@ export const MobileNav: React.FC = () => {
                         className={({ isActive }) =>
                             isActive ? 'active' : ''
                         }
-                        onClick={() => handleButtonClick('categories')}
                     >
                         <img src='/assets/img/icons/categories-inative-icon.svg' alt='categories icon' />
                         {activeButton === 'categories' && <p>Categories</p>}
@@ -43,7 +50,6 @@ export const MobileNav: React.FC = () => {
                         className={({ isActive }) =>
                             isActive ? 'active' : ''
                         }
-                        onClick={() => handleButtonClick('profile')}
                     >
                         <img src='/assets/img/icons/profile-inative-icon.svg' alt='profile icon' />
                         {activeButton === 'profile' && <p>Profile</p>}
@@ -55,7 +61,6 @@ export const MobileNav: React.FC = () => {
                         className={({ isActive }) =>
                             isActive ? 'active' : ''
                         }
-                        onClick={() => handleButtonClick('bag')}
                     >
                         <img src='/assets/img/icons/bag-inative-icon.svg' alt='bag icon' />
                         {activeButton === 'bag' && <p>Bag</p>}
