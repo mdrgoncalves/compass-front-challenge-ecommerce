@@ -37,4 +37,8 @@ export const GlobalStyle = createGlobalStyle`
     button {
         cursor: pointer;
     }
+
+    input {
+        font-family: 'Inter',sans-serif;
+    }
 `;
