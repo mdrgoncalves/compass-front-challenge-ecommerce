@@ -34,8 +34,10 @@ const UserProvider = ({ children }: any) => {
 
         try {
             await api.put(`/users/${userId}`, body);
-        } catch (error) {
-            console.error(error);
+        } catch (error: any) {
+            if (error.response.status === 413) {
+                alert('Image size is too large');
+            }
         }
     }
 
