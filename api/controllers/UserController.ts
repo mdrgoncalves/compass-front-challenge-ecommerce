@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import bcrypt from 'bcryptjs';
 import user from '../models/User.js';
 
 class UserController {
@@ -44,6 +45,12 @@ class UserController {
 
         const { user_id } = req.params;
         const bodyData = req.body;
+
+        if (bodyData.password) {
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(bodyData.password, salt);
+            bodyData.password = hashedPassword;
+        }
 
         try {
             const userUpdated = await user.findOneAndUpdate(
