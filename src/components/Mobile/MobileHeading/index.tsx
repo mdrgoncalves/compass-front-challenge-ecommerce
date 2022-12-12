@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { BackButton } from "../BackButton";
 import { Header, Heading } from "./styles";
 
@@ -6,20 +7,34 @@ interface MobileHeadingProps {
     withBack?: boolean;
     size?: 'big' | 'small';
     withPadding?: boolean;
+    onClick?: () => void;
 }
 
 export const MobileHeading: React.FC<MobileHeadingProps> = ({
     title,
     withBack = false,
     size = 'big',
-    withPadding = false
+    withPadding = false,
+    onClick
 }) => {
+
+    const navigate = useNavigate();
 
     return (
         
         <Header>
             {withBack 
-                ? <BackButton />
+                ? <BackButton 
+                    onClick={
+                        () => {
+                            if (onClick) {
+                                onClick();
+                            } else {
+                                navigate(-1);
+                            }
+                        }
+                    }
+                />
                 : null
             }
             <Heading 
