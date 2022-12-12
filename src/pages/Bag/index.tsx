@@ -4,10 +4,14 @@ import { PageHeader } from "../../components/Desktop/PageHeader";
 import { OrderSummary } from "../../components/OrderSummary";
 import { CouponInput } from "../../components/CouponInput";
 import { BagContainer, BagContent } from "./styles";
+import { BagState } from "../../context/BagContext";
 
 export const Bag: React.FC = () => {
 
+    const { state: { bag } } = BagState();
+
     return(
+        
         <BagContainer>
             <PageHeader 
                 title='My Cart'
@@ -15,7 +19,9 @@ export const Bag: React.FC = () => {
             />
             <BagContent>
                 <div className='bag-content__left'>
-                    <BagDisplay />
+                    <BagDisplay 
+                        productsList={bag}
+                    />
                     <CollapseButtonDesktop label='Apply Coupon Code' >
                         <div className='collapse-children'>
                             <CouponInput placeholder='Apply Coupon Code' />

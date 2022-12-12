@@ -14,6 +14,8 @@ interface BagDisplayCardProps {
     description: string;
     quantity: number;
     price: number;
+    withButtons?: boolean;
+    withQty?: boolean;
 };
 
 export const BagDisplayCard: React.FC<BagDisplayCardProps> = ({
@@ -22,7 +24,8 @@ export const BagDisplayCard: React.FC<BagDisplayCardProps> = ({
     name,
     description,
     quantity,
-    price
+    price,
+    withButtons = true
 }) => {
 
     return(
@@ -40,6 +43,7 @@ export const BagDisplayCard: React.FC<BagDisplayCardProps> = ({
                         <span>{quantity}</span>
                         <span>${(price * quantity).toFixed(2)}</span>
                     </TableItemPrices>
+                    {withButtons &&
                     <TableItemButtons>
                         <AddToWishlistButton
                             productId={productId}
@@ -49,6 +53,7 @@ export const BagDisplayCard: React.FC<BagDisplayCardProps> = ({
                             Remove
                         </button>
                     </TableItemButtons>
+                    }
                 </TableItemValues>
             </TableItem>
     )

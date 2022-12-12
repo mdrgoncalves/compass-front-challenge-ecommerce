@@ -1,11 +1,16 @@
-import { BagState } from "../../context/BagContext";
 import { IProduct } from "../../types/Products";
 import { BagDisplayCard } from "./BagDisplayCard";
 import { TableContainer, TableHeader } from "./styles"
 
-export const BagDisplay: React.FC = () => {
+interface BagDisplayProps {
+    productsList: [IProduct];
+    withButtons?: boolean;
+}
 
-    const { state: { bag } } = BagState();
+export const BagDisplay: React.FC<BagDisplayProps> = ({
+    productsList,
+    withButtons
+}) => {
 
     return(
 
@@ -18,7 +23,7 @@ export const BagDisplay: React.FC = () => {
                     <span>Subtotal</span>
                 </div>
             </TableHeader>
-            {bag.map((item: IProduct) => (
+            {productsList.map((item: IProduct) => (
                 <BagDisplayCard
                     key={item._id}
                     productId={item._id}
@@ -27,6 +32,7 @@ export const BagDisplay: React.FC = () => {
                     description={item.productDescription}
                     quantity={item.productQuantity}
                     price={item.productPrice}
+                    withButtons={withButtons}
                 />
             ))}
         </TableContainer>
