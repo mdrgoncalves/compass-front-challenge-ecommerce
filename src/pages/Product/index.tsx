@@ -21,6 +21,8 @@ import { ProductState } from "../../context/ProductContext";
 import { useEffect, useState } from "react";
 import { IProduct } from "../../types/Products";
 import { AddToWishlistButton } from "../../components/AddToWishlistButton";
+import { ProductsCarousel } from "../../components/ProductsCarousel";
+import { RatingsSection } from "../../components/RatingsSection";
 
 
 export const Product: React.FC = () => {
@@ -84,7 +86,14 @@ export const Product: React.FC = () => {
                 </div>
             </div>
             <div className='tabs'>
-                <ProductTabs productId={_id} /> 
+                <ProductTabs 
+                    firstTabName='Product Description'
+                    secondTabName='Related Products'
+                    thirdTabName='Ratings and Reviews'
+                    firstTabChildren={<DescriptionTab />}
+                    secondTabChildren={<ProductsCarousel />}
+                    thirdTabChildren={<RatingsSection productId={_id} />}
+                /> 
             </div>
 
             {useWidth({
