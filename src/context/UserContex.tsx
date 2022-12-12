@@ -9,6 +9,8 @@ const UserProvider = ({ children }: any) => {
     const [userId, setUserId] = useState('638c11805dab33fd788dde32');
     const [user, setUser] = useState({});
     const [wishlist, setWishlist] = useState({});
+    const [orders, setOrders] = useState({});
+    const [order, setOrder] = useState({});
 
     // Create User
     const createUser = async (body: any) => {
@@ -128,6 +130,38 @@ const UserProvider = ({ children }: any) => {
         }
     }
 
+    // List Order by Status
+    const listOrdersByStatus = async (status: string) => {
+
+        try {
+            const { data } = await api.get(`/orders/user/${userId}/${status}`);
+            setOrders(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // List Order by ID
+    const getOrderById = async (orderId: string) => {
+
+        try {
+            const { data } = await api.get(`/orders/${orderId}`);
+            setOrder(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Update Order
+    const updateOrder = async (orderId: string, body: any) => {
+
+        try {
+            await api.put(`/orders/${orderId}`, body);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
         <UserContext.Provider value={{ 
             createUser,
@@ -141,7 +175,12 @@ const UserProvider = ({ children }: any) => {
             removeProductOfWishlist,
             createAddress,
             createPayment,
-            createOrder
+            createOrder,
+            listOrdersByStatus,
+            orders,
+            getOrderById,
+            order,
+            updateOrder
         }}>
             {children}
         </UserContext.Provider>
