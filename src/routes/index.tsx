@@ -21,6 +21,7 @@ import { SignupPhone } from '../pages/SignupPhone';
 import { SignupOtp } from '../pages/SignupOtp';
 import { Profile } from '../pages/Profile';
 import { ProfileForm } from '../components/ProfileForm';
+import { Refer } from '../components/Refer';
 
 export const Routes: React.FC = () => {
 
@@ -38,7 +39,7 @@ export const Routes: React.FC = () => {
                 <Route element={<SignupOtp />} path="/signup-otp" />
                 <Route element={<Profile />} path="/profile">
                     <Route element={<ProfileForm />} path="information" />
-                    <Route element={<h2>REFER</h2>} path="refer" />
+                    <Route element={<Refer />} path="refer" />
                     <Route element={<h2>ORDERS</h2>} path="orders" />
                     <Route element={<h2>WISHLIST</h2>} path="wishlist" />
                     <Route element={<h2>REVIEWS</h2>} path="reviews" />
