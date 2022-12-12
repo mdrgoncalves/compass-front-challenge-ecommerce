@@ -11,6 +11,8 @@ const UserProvider = ({ children }: any) => {
     const [wishlist, setWishlist] = useState({});
     const [orders, setOrders] = useState({});
     const [order, setOrder] = useState({});
+    const [address, setAddress] = useState({});
+    const [payment, setPayment] = useState({});
 
     // Create User
     const createUser = async (body: any) => {
@@ -110,11 +112,33 @@ const UserProvider = ({ children }: any) => {
         }
     }
 
+    // Get Address by User
+    const getAddressByUser = async () => {
+
+        try {
+            const { data } = await api.get(`/address/user/${userId}`);
+            setAddress(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     // Create Payment
     const createPayment = async (body: any) => {
 
         try {
             await api.post(`/payments`, body);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Get Payment by User
+    const getPaymentByUser = async () => {
+
+        try {
+            const { data } = await api.get(`/payments/user/${userId}`);
+            setPayment(data);
         } catch (error) {
             console.error(error);
         }
@@ -174,7 +198,11 @@ const UserProvider = ({ children }: any) => {
             createOrUpdateWishlist,
             removeProductOfWishlist,
             createAddress,
+            getAddressByUser,
+            address,
             createPayment,
+            getPaymentByUser,
+            payment,
             createOrder,
             listOrdersByStatus,
             orders,
