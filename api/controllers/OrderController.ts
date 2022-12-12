@@ -19,7 +19,10 @@ class OrderController {
     static async getOrder(req: Request, res: Response) {
         const id = req.params.order_id;
         try {
-            const userOrder = await order.findById(id).populate('user');
+            const userOrder = await order.findById(id).populate('user').populate('address').populate({
+                path: 'orderItems',
+                populate: { path: 'product' }
+            });
             return res.status(200).json(userOrder);
         } catch (error) {
             return res.status(404).
@@ -32,8 +35,41 @@ class OrderController {
         const id = req.params.user_id;
 
         try {
-            const userOrder = await order.find({ user: id });
+            const userOrder = await order.find({ user: id }).populate({
+                path: 'orderItems',
+                populate: { path: 'product' }
+            });
             return res.status(200).json(userOrder);
+        } catch (error) {
+            return res.status(404).
+                json({ message: 'Order not found' });
+        }
+    }
+
+    static async getOrdersByUserAndStatus(req: Request, res: Response) {
+            
+        const id = req.params.user_id;
+        const status = req.params.status;
+
+        try {
+            const userOrder = await order.find({ user: id
+                , status: status });
+            return res.status(200).json(userOrder);
+        } catch (error) {
+            return res.status(404).
+                json({ message: 'Order not found' });
+        }
+    }
+
+    static async updateOrder(req: Request, res: Response) {
+
+        const id = req.params.order_id;
+        const bodyData = req.body;
+
+        try {
+            const updatedOrder = await order.findByIdAndUpdate
+                (id, bodyData, { new: true });
+            return res.status(200).json(updatedOrder);
         } catch (error) {
             return res.status(404).
                 json({ message: 'Order not found' });

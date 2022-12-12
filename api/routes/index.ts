@@ -89,5 +89,9 @@ routes.post('/orders', OrderController.createOrder);
 routes.get('/orders/:order_id', OrderController.getOrder);
 // List Orders by User
 routes.get('/orders/user/:user_id', OrderController.getOrdersByUser);
+// List Orders by User and Status
+routes.get('/orders/user/:user_id/:status', OrderController.getOrdersByUserAndStatus);
+// Update Order
+routes.put('/orders/:order_id', OrderController.updateOrder);
 
 export default routes;
