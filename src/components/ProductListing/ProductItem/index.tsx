@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { AddToBagButton } from "../../AddToBagButton";
+import { AddToWishlistButton } from "../../AddToWishlistButton";
 import { 
     ProductContainer, 
     ProductImg, 
@@ -18,6 +20,7 @@ interface ProductItemProps {
     title: string;
     desc: string;
     price: number;
+    forWishlist?: boolean;
 }
 
 export const ProductItem: React.FC<ProductItemProps> = ({
@@ -26,7 +29,8 @@ export const ProductItem: React.FC<ProductItemProps> = ({
     imgSrc,
     title,
     desc,
-    price
+    price,
+    forWishlist = false
 }) => {
 
     return (
@@ -47,10 +51,17 @@ export const ProductItem: React.FC<ProductItemProps> = ({
                         <span className='previous-price'>$78.66</span>
                         <span className='discount-price'>50% OFF</span>
                     </PricesContainer>
+                    {forWishlist &&
+                        <AddToBagButton product={id} />
+                    }
                 </ProductTextContainer>
-                <ProductFavorite>
-                    <img src='/assets/img/wishlist-icon.svg' alt='favorite icon' />
-                </ProductFavorite>
+                {forWishlist ? 
+                    null : 
+                    <AddToWishlistButton 
+                        productId={id}
+                        buttonType='icon'
+                    />
+                }
             </ProductContent>
         </ProductContainer>
     );  
