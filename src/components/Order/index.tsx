@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ProductState } from "../../context/ProductContext";
 import { UserState } from "../../context/UserContex";
 import { useWidth } from "../../utils/useWidth";
 import { BagDisplay } from "../BagDisplay";
@@ -19,7 +18,7 @@ export const Order: React.FC = () => {
     useEffect(() => {
         getOrderById(orderId);
         const orderList = order.orderItems;
-        setAddress(address);
+        setAddress(order.address);
         if (orderList) {
             const productList = orderList.map((item: any) => {
                 const product = {
@@ -35,13 +34,7 @@ export const Order: React.FC = () => {
             setProductsList(productList);
         }
     }, [order]);
-
     
-    useEffect(() => {
-        setAddress(order.address);
-    }, []);
-    
-
     return (
         
         <>
@@ -69,12 +62,12 @@ export const Order: React.FC = () => {
                                 discount={0}
                                 deliveryFee={0}
                                 grandTotal={0}
-                                fullName={address.fullName}
-                                street={address.street}
-                                city={address.city}
-                                state={address.state}
-                                pincode={address.pincode}
-                                mobileNumber={address.mobileNumber}
+                                fullName={address ? address.fullName : ''}
+                                street={address ? address.street : ''}
+                                city={address ? address.city : ''}
+                                state={address ? address.state : ''}
+                                pincode={address ? address.pincode : ''}
+                                mobileNumber={address ? address.mobileNumber : ''}
                             />
                         </OrderWrapper>
                     }

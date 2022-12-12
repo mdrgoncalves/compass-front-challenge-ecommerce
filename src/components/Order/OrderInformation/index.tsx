@@ -1,3 +1,4 @@
+import { AddressCard } from "../../AddressCard";
 import { OrderSection, ColumnFlex, FlexWrapper, OrderDetails } from "./styles";
 
 interface OrderInformationProps {
@@ -18,12 +19,12 @@ export const OrderInformation: React.FC<OrderInformationProps> = ({
     discount = 0,
     deliveryFee = 0,
     grandTotal = 0,
-    fullName = '',
-    street = '',
-    city = '',
-    state = '',
-    pincode = '',
-    mobileNumber = '',
+    fullName,
+    street,
+    city ,
+    state,
+    pincode,
+    mobileNumber,
 }) => {
 
     return (
@@ -54,13 +55,14 @@ export const OrderInformation: React.FC<OrderInformationProps> = ({
                     <h3>Payment Details</h3>
                     <p>Credit Card</p>
                 </ColumnFlex>
-                <ColumnFlex>
-                    <h3>Address Details</h3>
-                    <p>{fullName}</p>
-                    <p>{street}</p>
-                    <p>{`${city}, ${state} ${pincode}`}</p>
-                    <p>{mobileNumber}</p>
-                </ColumnFlex>
+                <AddressCard
+                    fullName={fullName}
+                    street={street}
+                    city={city}
+                    state={state}
+                    pincode={pincode}
+                    mobileNumber={mobileNumber}
+                />
             </FlexWrapper>
         </OrderSection>
     );  
