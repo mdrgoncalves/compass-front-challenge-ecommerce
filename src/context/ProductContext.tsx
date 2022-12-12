@@ -54,6 +54,17 @@ const ProductProvider = ({ children }: any) => {
         }
     }
 
+    // Get Ratings by User
+    const getRatingsByUser = async (id: string) => {
+
+        try {
+            const { data } = await api.get(`/ratings/user/${id}`);
+            setProductReviews(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     // Add Rating
     const addRating = async (rating: any) => {
 
@@ -73,6 +84,7 @@ const ProductProvider = ({ children }: any) => {
             getProductsByCategory,
             categoryProducts,
             getRatingsByProduct,
+            getRatingsByUser,
             productReviews,
             addRating
         }}>
