@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
                         <nav>
                             <ItemsListRow>
                                 <li><Link to="/404">Contact Us</Link></li>
-                                <li><Link to="/404">About Us</Link></li>
+                                <li><Link to="/about">About Us</Link></li>
                                 <li><Link to="/404">Careers</Link></li>
                                 <li><Link to="/404">Press</Link></li>
                             </ItemsListRow>

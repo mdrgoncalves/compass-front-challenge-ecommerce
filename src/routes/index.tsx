@@ -28,6 +28,7 @@ import { Wishlist } from '../components/Wishlist';
 import { Reviews } from '../components/Reviews';
 import { Addresses } from '../components/Addresses';
 import { SavedCards } from '../components/SavedCards';
+import { About } from '../pages/About';
 
 export const Routes: React.FC = () => {
 
@@ -59,6 +60,7 @@ export const Routes: React.FC = () => {
                 <Route element={<Bag />} path="/cart" />
                 <Route element={<Checkout />} path="/checkout" />
                 <Route element={<OrderConfirmed />} path="/confirmed" />
+                <Route element={<About />} path="/about" />
                 <Route element={<Page404 />} path="*" />  
             </Switch>
             <FooterDesktop />
