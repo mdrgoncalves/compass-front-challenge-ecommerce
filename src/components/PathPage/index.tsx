@@ -13,7 +13,7 @@ export const PathPage: React.FC<PathPageProps> = ({
 
     return (
         <PathContainer>
-            <Link to='/'>Home</Link>
+            <Link to='/home'>Home</Link>
             {paths.map((path, index) => (
                 <span key={index}>
                     <img src='/assets/img/icons/chevron-right-small-icon.png' alt='right chevron' />

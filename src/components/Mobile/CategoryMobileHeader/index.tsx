@@ -15,7 +15,7 @@ export const CategoryMobileHeader: React.FC<CategoryMobileHeaderProps> = ({
         
         <HeaderContainer>
             <TitleContainer>
-                <Link to='/'>
+                <Link to='/home'>
                     <img src='/assets/img/icons/leading-icon.svg' alt='back icon' />
                 </Link>
                 <h1>{category}</h1>
