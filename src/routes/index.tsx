@@ -29,6 +29,7 @@ import { Reviews } from '../components/Reviews';
 import { Addresses } from '../components/Addresses';
 import { SavedCards } from '../components/SavedCards';
 import { About } from '../pages/About';
+import { MobileSearch } from '../pages/MobileSearch';
 
 export const Routes: React.FC = () => {
 
@@ -61,6 +62,7 @@ export const Routes: React.FC = () => {
                 <Route element={<Checkout />} path="/checkout" />
                 <Route element={<OrderConfirmed />} path="/confirmed" />
                 <Route element={<About />} path="/about" />
+                <Route element={<MobileSearch />} path="/mobile-search" />
                 <Route element={<Page404 />} path="*" />  
             </Switch>
             <FooterDesktop />
