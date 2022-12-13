@@ -22,6 +22,12 @@ import { SignupOtp } from '../pages/SignupOtp';
 import { Profile } from '../pages/Profile';
 import { ProfileForm } from '../components/ProfileForm';
 import { Refer } from '../components/Refer';
+import { Orders } from '../components/Orders';
+import { Order } from '../components/Order';
+import { Wishlist } from '../components/Wishlist';
+import { Reviews } from '../components/Reviews';
+import { Addresses } from '../components/Addresses';
+import { SavedCards } from '../components/SavedCards';
 
 export const Routes: React.FC = () => {
 
@@ -40,11 +46,12 @@ export const Routes: React.FC = () => {
                 <Route element={<Profile />} path="/profile">
                     <Route element={<ProfileForm />} path="information" />
                     <Route element={<Refer />} path="refer" />
-                    <Route element={<h2>ORDERS</h2>} path="orders" />
-                    <Route element={<h2>WISHLIST</h2>} path="wishlist" />
-                    <Route element={<h2>REVIEWS</h2>} path="reviews" />
-                    <Route element={<h2>ADDRESSES</h2>} path="address" />
-                    <Route element={<h2>CARDS</h2>} path="cards" />
+                    <Route element={<Orders />} path="orders" />
+                    <Route element={<Order />} path="orders/:orderId" />
+                    <Route element={<Wishlist />} path="wishlist" />
+                    <Route element={<Reviews />} path="reviews" />
+                    <Route element={<Addresses />} path="address" />
+                    <Route element={<SavedCards />} path="cards" />
                 </Route>
                 <Route element={<Home />} path="/home" />
                 <Route element={<Category />} path="/category/:category" />
