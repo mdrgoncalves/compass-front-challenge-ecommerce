@@ -30,6 +30,7 @@ import { Addresses } from '../components/Addresses';
 import { SavedCards } from '../components/SavedCards';
 import { About } from '../pages/About';
 import { MobileSearch } from '../pages/MobileSearch';
+import { MobileReviews } from '../pages/MobileReviews';
 
 export const Routes: React.FC = () => {
 
@@ -63,6 +64,8 @@ export const Routes: React.FC = () => {
                 <Route element={<OrderConfirmed />} path="/confirmed" />
                 <Route element={<About />} path="/about" />
                 <Route element={<MobileSearch />} path="/mobile-search" />
+                <Route element={<MobileReviews />} path="/:productId/mobile-reviews" />
+                
                 <Route element={<Page404 />} path="*" />  
             </Switch>
             <FooterDesktop />

@@ -106,7 +106,7 @@ export const Product: React.FC = () => {
                     <Spacer />
                     <MobileButtonTab 
                         label='Ratings & Reviews'
-                        route='/404'
+                        route={`/${_id}/mobile-reviews`}
                     />
                     <Spacer />
                     <InviteBlock />
