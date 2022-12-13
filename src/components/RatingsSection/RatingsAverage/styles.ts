@@ -10,6 +10,7 @@ export const ProgressBar = styled.div`
     span {
         ${font.labelLarge};
         color: var(--color-low-emphasis);
+        font-weight: 600;
     }
 
     progress {
