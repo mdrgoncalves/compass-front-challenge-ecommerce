@@ -6,7 +6,9 @@ export const UserContext = createContext({} as any);
 
 const UserProvider = ({ children }: any) => {
 
-    const [userId, setUserId] = useState('638c11805dab33fd788dde32');
+    const [userId, setUserId] = useState(
+        localStorage.getItem('userId') ? localStorage.getItem('userId') : '638c11805dab33fd788dde32'
+    );
     const [user, setUser] = useState({});
     const [wishlist, setWishlist] = useState({});
     const [orders, setOrders] = useState({});
@@ -14,11 +16,16 @@ const UserProvider = ({ children }: any) => {
     const [address, setAddress] = useState({});
     const [payment, setPayment] = useState({});
 
+    const userIdHandler = (userId: string) => {
+        localStorage.setItem('userId', userId);
+        setUserId(userId);
+    } 
+
     // Create User
     const createUser = async (body: any) => {
 
         const id = new mongoose.Types.ObjectId();
-        setUserId(id.toString());
+        userIdHandler(id.toString())
         
         try {
             await api.post(`/users`, 
