@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { BagState } from "../../../context/BagContext"
 
 import { IconButton } from "../../IconButton"
@@ -12,6 +12,7 @@ export const HeaderDesktop: React.FC = () => {
     const [isBasketOpen, setIsBasketOpen] = useState(false)
 
     const { state: { bag } } = BagState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (isBasketOpen) {
@@ -25,7 +26,7 @@ export const HeaderDesktop: React.FC = () => {
 
         <HeaderContainer>
             <MenuContainer>
-                <NavLink to="/">
+                <NavLink to="/home">
                     <img src="/assets/img/logo.svg" alt="cora'l logo" />
                 </NavLink>
                 <nav>
@@ -52,8 +53,16 @@ export const HeaderDesktop: React.FC = () => {
             </MenuContainer>
             <ButtonsContainer>
                 <SearchInput />
-                <IconButton iconSrc='/assets/img/wishlist-icon.svg' alt='favorite icon'/>
-                <IconButton iconSrc='/assets/img/profile-icon.svg' alt='profile icon'/>
+                <IconButton 
+                    iconSrc='/assets/img/wishlist-icon.svg' 
+                    alt='favorite icon'
+                    onClick={() => navigate('/profile/wishlist')}
+                />
+                <IconButton 
+                    iconSrc='/assets/img/profile-icon.svg' 
+                    alt='profile icon'
+                    onClick={() => navigate('/profile/information')}
+                />
                 <IconButton 
                     iconSrc={bag.length > 0 ? '/assets/img/icons/bag-with-notification-icon.svg' : '/assets/img/bag-icon.svg' }
                     alt='bag icon'
