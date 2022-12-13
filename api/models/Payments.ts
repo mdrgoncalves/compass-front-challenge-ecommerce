@@ -7,6 +7,7 @@ const PaymentSchema = new mongoose.Schema(
         cardNumber: {type: String, required: true},
         expirationDate: {type: String, required: true},
         cvc: {type: String, required: true},
+        finalNumbers: {type: String},
         user: {type: mongoose.Schema.Types.ObjectId, ref: 'user'}
     },
     { _id: false }
