@@ -38,7 +38,9 @@ export const GlobalStyle = createGlobalStyle`
         cursor: pointer;
     }
 
-    input {
+    input,
+    textarea,
+    select {
         font-family: 'Inter',sans-serif;
     }
 `;
