@@ -20,12 +20,19 @@ export const ProductsGrid = styled.section`
     justify-items: start;
     gap: 68px 32px;
 
-    @media (max-width: 768px) {
+    @media screen and (max-width: 768px) {
         justify-content: center;
     }
 
-    @media (max-width: 985px) {
+    @media screen and (max-width: 985px) {
         grid-template-columns: repeat(2, minmax(100px, 286px));
         gap: 25px 22px;
+    }
+
+    @media screen and (max-width: 319px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; 
     }
 `;
