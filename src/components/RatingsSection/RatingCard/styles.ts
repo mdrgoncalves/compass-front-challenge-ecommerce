@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { font } from "../../../styles/mixins";
 
 export const RatingCardWrapper = styled.article`
 
@@ -18,7 +19,7 @@ export const RatingValue = styled.div`
         align-items: center;
         font-size: 8.125rem;
 
-        &::before {
+        &::after {
             content: '';
             background-image: url('/assets/img/icons/star-icon.svg');
             background-repeat: no-repeat;
@@ -26,6 +27,21 @@ export const RatingValue = styled.div`
             display: block;
             height: 10.16vw;
             width: 10.16vw;
+        }
+    }
+
+    @media screen and (max-width: 985px) {
+        padding: 0.75rem;
+
+        span {
+            font-size: 1rem;
+            font-weight: 600;
+            gap: 3px;
+
+            &::after {
+                height: 20px;
+                width: 20px;
+            }
         }
     }
 `
@@ -36,6 +52,10 @@ export const RatingContent = styled.div`
     flex-direction: column;
     gap: 1.5rem;
     padding-top: 0.5rem;
+
+    @media screen and (max-width: 985px) {
+        gap: 0.75rem;
+    }
 `;
 
 export const RatingHeader = styled.div`
@@ -51,6 +71,19 @@ export const RatingHeader = styled.div`
     p {
         font-size: 0.875rem;
     }
+
+    @media screen and (max-width: 985px) {
+        gap: 0.1875rem;
+
+        h4 {
+            ${font.titleRegular};
+        }
+
+        p {
+            ${font.titleMedium};
+            color: var(--color-low-emphasis);
+        }
+    }
 `;
 
 export const RatingComment = styled.div`
@@ -63,4 +96,23 @@ export const RatingComment = styled.div`
     h3 {
         font-size: 1rem;
     }
+
+    @media screen and (max-width: 985px) {
+
+        h3 {
+            ${font.titleRegular};
+        }
+
+        p {
+            ${font.titleMedium};
+            color: var(--color-low-emphasis);
+        }
+    }
+`;
+
+export const FlexWrapper = styled.div`
+
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 `;
