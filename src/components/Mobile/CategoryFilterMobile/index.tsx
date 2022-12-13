@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { MobileModal } from "../MobileModal";
 import { SortModal } from "./SortModal";
 import { FiltersContainer, FilterButton } from "./styles";
 

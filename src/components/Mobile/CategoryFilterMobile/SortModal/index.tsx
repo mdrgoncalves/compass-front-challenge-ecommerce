@@ -1,4 +1,5 @@
-import { SortContainer, SortModalWrapper } from "./styles";
+import { MobileModal } from "../../MobileModal";
+import { SortContainer } from "./styles";
 
 interface SortModalProps {
     onClose: () => void;
@@ -8,15 +9,9 @@ export const SortModal: React.FC<SortModalProps> = ({
     onClose
 }) => {
 
-    const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        if (e.target === e.currentTarget) {
-            onClose();
-        }
-    };
-
     return (
         
-        <SortModalWrapper onClick={handleOutsideClick}>
+        <MobileModal onClose={onClose}>
             <SortContainer>
                 <h2>Sort By</h2>
                 <fieldset>
@@ -42,6 +37,6 @@ export const SortModal: React.FC<SortModalProps> = ({
                     </label>
                 </fieldset>
             </SortContainer>
-        </SortModalWrapper>
+        </MobileModal>
     );  
 };
