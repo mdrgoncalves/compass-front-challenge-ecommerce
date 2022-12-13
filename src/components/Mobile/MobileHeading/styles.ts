@@ -27,4 +27,8 @@ export const Heading = styled.h1`
         : '0'
     };
     color: var(--color-primary);
+
+    &::first-letter {
+        text-transform: uppercase;
+    }
 `
