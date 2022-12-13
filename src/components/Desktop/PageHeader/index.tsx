@@ -5,11 +5,13 @@ import { PathWrapper, TitleWrapper } from "./styles";
 interface PageHeaderProps {
     title: string;
     paths: string[];
+    titleMargin?: string;
 }
 
 export const PageHeader: React.FC<PageHeaderProps> = ({
     title,
-    paths
+    paths,
+    titleMargin
 }) => {
 
     return (
@@ -20,7 +22,9 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
                     paths={paths}
                 />
             </PathWrapper>
-            <TitleWrapper>
+            <TitleWrapper
+                titleMargin={titleMargin}
+            >
                 <PageTitle title={title} />
             </TitleWrapper>
         </div>
