@@ -23,6 +23,13 @@ export const InputWrapper = styled.div`
         color: var(--color-low-emphasis);
         width: ${(props: Props) => props.maxWidth ? `${props.maxWidth}px` : 'none'};
     }
+
+    @media screen and (max-width: 985px) {
+
+        input {
+            width: 100%;
+        }
+    }
 `;
 
 export const Error = styled.span`

@@ -7,6 +7,10 @@ export const FlexWrapper = styled.div`
     align-items: center;
     gap: 1rem;
     margin: 1.5rem 0;
+
+    @media screen and (max-width: 985px) {
+        margin: 0 auto;
+    }
 `;
 
 export const ProfileIcon = styled.img`
@@ -43,5 +47,9 @@ export const ButtonWrapper = styled(FlexWrapper)`
         ${font.titleMedium};
         width: 136px;
         border: 0;
+    }
+
+    @media screen and (max-width: 985px) {
+        flex-direction: column;
     }
 `;

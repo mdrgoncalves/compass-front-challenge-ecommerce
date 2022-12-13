@@ -22,6 +22,12 @@ export const FlexWrapper = styled.div`
     label {
         ${font.bodyMedium};
     }
+
+    @media screen and (max-width: 985px) {
+        flex-direction: column;
+        align-items: normal;
+        gap: 1rem;
+    }
 `;
 
 export const FlexColumn = styled(FlexWrapper)`
