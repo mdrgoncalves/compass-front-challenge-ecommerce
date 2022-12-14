@@ -16,7 +16,7 @@ export const Page404: React.FC = () => {
                 <p className='desc'>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
                 <BackContainer>
                     <BackButton />
-                    <span onClick={() => navigate('/')}>Back to Home</span>
+                    <span onClick={() => navigate('/home')}>Back to Home</span>
                 </BackContainer>
             </PageContent>
         </PageContainer>
