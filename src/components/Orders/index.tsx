@@ -25,26 +25,14 @@ export const Orders: React.FC = () => {
 
     return (
         
-        <>
-        {useWidth({
-            renderMobile: () => (
-                <>
-                </>
-            ),
-            renderDesktop: () => (
-                <>
-                <ProductTabs 
-                    firstTabName='Completed'
-                    secondTabName='Processing'
-                    thirdTabName='Cancelled'
-                    firstTabChildren={<OrderList orders={orders} />}
-                    secondTabChildren={<OrderList orders={orders} />}
-                    thirdTabChildren={<OrderList orders={orders} />}
-                    setCurrentActiveTab = {setCurrentActiveTab} 
-                />
-                </>
-            ),
-        })}
-        </>
+        <ProductTabs isNone
+            firstTabName='Completed'
+            secondTabName='Processing'
+            thirdTabName='Cancelled'
+            firstTabChildren={<OrderList orders={orders} />}
+            secondTabChildren={<OrderList orders={orders} />}
+            thirdTabChildren={<OrderList orders={orders} />}
+            setCurrentActiveTab = {setCurrentActiveTab} 
+        />
     );  
 };
