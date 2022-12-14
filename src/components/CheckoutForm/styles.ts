@@ -25,6 +25,15 @@ export const CheckForm = styled.form`
         ${font.bodyMedium};
         background-color: var(--color-grey);
     }
+
+    @media screen and (max-width: 985px) {
+        flex-direction: column;
+        margin-top: 0;
+
+        input {
+            width: 100%;
+        }
+    }
 `
 
 export const InputsWrapper = styled.div`
@@ -38,6 +47,13 @@ export const InputsWrapperRight = styled(InputsWrapper)`
 
     input {
         width: 391px;
+    }
+
+    @media screen and (max-width: 985px) {
+
+        input {
+            width: 100%;
+        }
     }
 `
 

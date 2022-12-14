@@ -4,6 +4,11 @@ export const PaymentWrapper = styled.section`
 
     display: flex;
     gap: 20px;
+
+    @media screen and (max-width: 985px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export const PaymentOption = styled.label`
@@ -39,6 +44,10 @@ export const PaymentOption = styled.label`
     .card-img {
         width: 43px;
         height: 33px;
+    }
+
+    @media screen and (max-width: 985px) {
+        margin: 0 0 1rem 0;
     }
 `;
 
