@@ -10,12 +10,18 @@ import { PaymentSection } from "../../components/PaymentSection";
 import { UserState } from "../../context/UserContex";
 import { 
     ButtonWrapper, 
+    ButtonWrapperMobile, 
     CheckoutContainer, 
     CheckoutContent, 
-    RightContainer 
+    CheckoutMobileContainer, 
+    FlexWrapper, 
+    RightContainer, 
+    WrapperWithTitle
 } from "./styles";
 import { BagState } from "../../context/BagContext";
 import { IProduct } from "../../types/Products";
+import { useWidth } from "../../utils/useWidth";
+import { MobileHeading } from "../../components/Mobile/MobileHeading";
 
 export const Checkout: React.FC = () => {
 
@@ -90,40 +96,89 @@ export const Checkout: React.FC = () => {
 
     return (
         
-        <CheckoutContainer>
-            <PageHeader
-                title='Checkout'
-                paths={['Checkout']}
-            />
-            <CheckoutContent>
-                <RightContainer>
-                    <CollapseButtonDesktop label='Add New Address'>
-                        <CheckoutForm 
-                            setAddressId={setAddressId}
-                            trigger={trigger}
+        <>
+        {useWidth({
+            renderMobile: () => (
+                <>
+                <CheckoutMobileContainer>
+                    <MobileHeading
+                        title='Order Summary'
+                        withBack
+                        withPadding
+                        size='small'
+                        onClick={() => navigate(-1)}
+                    />
+                    <FlexWrapper>
+                        <OrderSummary
+                            withImages
                         />
-                    </CollapseButtonDesktop>
-                    <CollapseButtonDesktop label='Select Payment Method'>
-                        <PaymentSection
-                            setCardNumberState={setCardNumber}
-                            setCardDateState={setCardDate}
-                            setCardCvvState={setCardCvv}
-                        />
-                    </CollapseButtonDesktop>
-                </RightContainer>
-                <OrderSummary withImages />
-            </CheckoutContent>
-            <ButtonWrapper>
-                <Link to='/cart'>Back to Cart</Link>
-                <Button 
-                    type='submit'
-                    form='checkout'
-                    color='primary'
-                    onClick={() => clickHandler()}
-                >
-                    Place Order
-                </Button>
-            </ButtonWrapper>
-        </CheckoutContainer>
+                        <WrapperWithTitle>
+                            <h3>Deliver to</h3>
+                            <CheckoutForm
+                                setAddressId={setAddressId}
+                                trigger={trigger}
+                            />
+                        </WrapperWithTitle>
+                        <WrapperWithTitle>
+                            <h3>Payment</h3>
+                            <PaymentSection
+                                setCardNumberState={setCardNumber}
+                                setCardDateState={setCardDate}
+                                setCardCvvState={setCardCvv}
+                            />
+                        </WrapperWithTitle>
+                    </FlexWrapper>
+                    <ButtonWrapperMobile>
+                        <Button
+                            type='submit'
+                            form='checkout'
+                            color='primary'
+                            onClick={() => clickHandler()}
+                        >
+                            Pay Now
+                        </Button>
+                    </ButtonWrapperMobile>
+                </CheckoutMobileContainer>
+                </>
+            ),
+            renderDesktop: () => ( 
+                <CheckoutContainer>
+                    <PageHeader
+                        title='Checkout'
+                        paths={['Checkout']}
+                    />
+                    <CheckoutContent>
+                        <RightContainer>
+                            <CollapseButtonDesktop label='Add New Address'>
+                                <CheckoutForm 
+                                    setAddressId={setAddressId}
+                                    trigger={trigger}
+                                />
+                            </CollapseButtonDesktop>
+                            <CollapseButtonDesktop label='Select Payment Method'>
+                                <PaymentSection
+                                    setCardNumberState={setCardNumber}
+                                    setCardDateState={setCardDate}
+                                    setCardCvvState={setCardCvv}
+                                />
+                            </CollapseButtonDesktop>
+                        </RightContainer>
+                        <OrderSummary withImages />
+                    </CheckoutContent>
+                    <ButtonWrapper>
+                        <Link to='/cart'>Back to Cart</Link>
+                        <Button 
+                            type='submit'
+                            form='checkout'
+                            color='primary'
+                            onClick={() => clickHandler()}
+                        >
+                            Place Order
+                        </Button>
+                    </ButtonWrapper>
+                </CheckoutContainer>
+            )
+        })}
+        </>
     );  
 };
