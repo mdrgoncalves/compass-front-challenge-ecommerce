@@ -57,7 +57,7 @@ export const MobileNav: React.FC = () => {
                 </li>
                 <li>
                     <NavItem
-                        to='/bag'
+                        to='/cart'
                         className={({ isActive }) =>
                             isActive ? 'active' : ''
                         }
