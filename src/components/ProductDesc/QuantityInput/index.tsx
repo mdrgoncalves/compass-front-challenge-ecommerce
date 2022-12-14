@@ -5,11 +5,15 @@ import { InputContainer, InputWrapper } from "./styles";
 interface InputProps {
     label?: string;
     productId: string;
+    displayIsNone?: boolean;
+    marginBottom?: string;
 }
 
 export const QuantityInput : React.FC<InputProps> = ({
     label,
-    productId
+    productId,
+    displayIsNone,
+    marginBottom
 }) => {
 
     const { bagQuantity, setBagQuantity } = BagState();
@@ -44,7 +48,10 @@ export const QuantityInput : React.FC<InputProps> = ({
 
     return (
         
-        <InputContainer>
+        <InputContainer
+            displayIsNone={displayIsNone}
+            marginBotton={marginBottom}
+        >
             {label ? <label>{label}:</label> : null}
             <InputWrapper>
                 <button onClick={handleMinus}> 

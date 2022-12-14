@@ -18,6 +18,18 @@ export const SummaryContainer = styled.div`
         display: flex;
         justify-content: space-between;
     }
+
+    @media screen and (max-width: 985px) {
+        width: 100%;
+
+        h2 {
+            ${font.titleRegular};
+        }
+
+        p {
+            ${font.titleMedium};
+        }
+    }
 `;
 
 export const SummaryContent = styled.div`

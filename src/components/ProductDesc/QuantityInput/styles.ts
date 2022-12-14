@@ -1,16 +1,21 @@
 import { font } from './../../../styles/mixins';
 import styled from 'styled-components';
 
+interface Props {
+    displayIsNone?: boolean;
+    marginBotton?: string;
+}
+
 export const InputContainer = styled.div`
 
     display: flex;
     gap: 1rem;
     ${font.displaySmall};
     color: var(--color-dark);
-    margin-bottom: 50px;
+    margin-bottom: ${(props: Props) => props.marginBotton ? props.marginBotton : '50px'};
 
     @media (max-width: 985px) {
-        display: none;
+        display: ${(props: Props) => props.displayIsNone ? 'flex' : 'none'};
     }
 `;
 
