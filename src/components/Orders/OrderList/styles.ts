@@ -7,6 +7,10 @@ export const GridWrapper = styled.ul`
     align-items: center;
     padding: 0 0 0.5rem 3.44rem;
     border-bottom: 1px solid var(--color-grey);
+
+    @media screen and (max-width: 985px) {
+        display: none;
+    }
 `;
 
 export const GridList = styled.ul`
