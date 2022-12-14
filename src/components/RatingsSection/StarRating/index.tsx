@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StarIcon } from "./style";
+import { StarIcon, StarsWrapper } from "./style";
 
 interface StarRatingProps {
     setRating: (rating: number) => void;
@@ -19,7 +19,7 @@ export const StarRating: React.FC<StarRatingProps> = ({
 
     return (
         
-        <div>
+        <StarsWrapper>
             {stars.map((_, index) => {
                 return (
                     <StarIcon
@@ -31,6 +31,6 @@ export const StarRating: React.FC<StarRatingProps> = ({
                     />
                 )
             })}
-        </div>
+        </StarsWrapper>
     );  
 };
