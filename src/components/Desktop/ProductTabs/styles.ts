@@ -1,6 +1,10 @@
 import { font } from './../../../styles/mixins';
 import styled from 'styled-components';
 
+interface Props {
+    isNone?: boolean;
+}
+
 export const TabsContainer = styled.div`
 
     width: 100%;
@@ -8,7 +12,7 @@ export const TabsContainer = styled.div`
     border-radius: 2rem;
 
     @media (max-width: 985px) {
-        display: none;
+        display: ${(props: Props) => (!props.isNone ? 'none' : 'block')};
     }
 `;
 
@@ -39,6 +43,16 @@ export const TabsNav = styled.ul`
         &.active {
             background: var(--color-primary);
             color: var(--color-bright);
+        }
+    }
+
+    @media screen and (max-width: 985px) {
+        gap: 0.8125rem;
+        padding: 0.25rem;
+
+        li {
+            ${font.labelMedium};
+            padding: 0.375rem 1.125rem;
         }
     }
 `;

@@ -9,6 +9,7 @@ interface ProductTabsProps {
     secondTabChildren: React.ReactNode;
     thirdTabChildren: React.ReactNode;
     setCurrentActiveTab?: React.Dispatch<React.SetStateAction<string>>;
+    isNone?: boolean;
 }
 
 export const ProductTabs: React.FC<ProductTabsProps> = ({
@@ -18,7 +19,8 @@ export const ProductTabs: React.FC<ProductTabsProps> = ({
     firstTabChildren,
     secondTabChildren,
     thirdTabChildren,
-    setCurrentActiveTab
+    setCurrentActiveTab,
+    isNone
 }) => {
 
     const [activeTab, setActiveTab] = useState('tab1');
@@ -29,7 +31,9 @@ export const ProductTabs: React.FC<ProductTabsProps> = ({
     }
 
     return (
-        <TabsContainer>
+        <TabsContainer
+            isNone={isNone}
+        >
             <TabsNav>
                 <li 
                     className={activeTab === 'tab1' ? 'active' : ''}
