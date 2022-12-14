@@ -17,13 +17,13 @@ export const OrderConfirmed: React.FC = () => {
             <div className='buttons'>
                 <Button 
                     color='secondary'
-                    onClick={() => navigate('/404')}
+                    onClick={() => navigate('/profile/orders')}
                 >
                     View Order
                 </Button>
                 <Button 
                     color='primary'
-                    onClick={() => navigate('/')}
+                    onClick={() => navigate('/home')}
                 >
                     Continue Shopping
                 </Button>
