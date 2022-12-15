@@ -10,7 +10,7 @@
     "storybook": "SET NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "server": "nodemon --exec ts-node api/index.ts",
-    "node-server": "node --loader ts-node/esm api/index.ts"
+    "node-server": "ts-node-esm api/index.ts"
     
   },
   "dependencies": {
