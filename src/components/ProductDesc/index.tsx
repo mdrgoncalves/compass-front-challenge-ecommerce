@@ -40,6 +40,7 @@ export const ProductDesc: React.FC<ProductDescProps> = ({
 
     useEffect(() => {
         getCoupons();
+        console.log(coupons);
     }, []);
     
     return (
@@ -71,14 +72,13 @@ export const ProductDesc: React.FC<ProductDescProps> = ({
         {useWidth({
             renderMobile: () => (
                 <Carousel>
-                    {coupons.map((coupon: ICoupon) => (
-                            <CopomCard
-                                key={coupon._id}
-                                description={coupon.description}
-                                code={coupon.code}
-                            />
-                        ))
-                    }
+                    {Object.values(coupons).map((coupon: any) => (
+                        <CopomCard
+                            key={coupon._id}
+                            description={coupon.description}
+                            code={coupon.code}
+                        />
+                    ))}
                 </Carousel>
             ),
             renderDesktop: () => (
@@ -92,14 +92,13 @@ export const ProductDesc: React.FC<ProductDescProps> = ({
             ),
             renderDesktop: () => (
                 <Carousel>
-                    {coupons.map((coupon: ICoupon) => (
-                            <CopomCard
-                                key={coupon._id}
-                                description={coupon.description}
-                                code={coupon.code}
-                            />
-                        ))
-                    }
+                    {Object.values(coupons).map((coupon: any) => (
+                        <CopomCard
+                            key={coupon._id}
+                            description={coupon.description}
+                            code={coupon.code}
+                        />
+                    ))}
                 </Carousel>
             )
         })}
