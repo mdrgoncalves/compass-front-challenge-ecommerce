@@ -56,7 +56,7 @@ routes.get('/coupons/active', CouponController.getActiveCoupons);
 // List coupon by id
 routes.get('/coupons/:coupon_id', CouponController.getCouponById);
 // Desactivate coupon
-routes.put('/coupons/:coupon_id', CouponController.desactivateCoupon);
+routes.put('/coupons/:coupon_id/desactivate', CouponController.desactivateCoupon);
 
 // Create rating
 routes.post('/ratings', RatingController.createRating);
