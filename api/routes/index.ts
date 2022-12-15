@@ -35,6 +35,12 @@ routes.get('/products/:product_id', ProductController.getProductById);
 routes.get('/products/category/:category', ProductController.getProductsByCategory);
 // Update product
 routes.put('/products/:product_id', ProductController.updateProduct);
+// Get products by Category and Page
+routes.get('/products/category/:category/page/:page/limit/:limit', ProductController.getProductsByCategoryAndPage);
+// Get products by Category and Page sorted by Name
+routes.get('/products/category/:category/page/:page/limit/:limit/sort/name', ProductController.getProductsByCategoryAndPageSortedByName);
+// Get products by Category and Page sorted by Price
+routes.get('/products/category/:category/page/:page/limit/:limit/sort/price', ProductController.getProductsByCategoryAndPageSortedByPrice);
 
 // Add product in Wishlist
 routes.post('/wishlist/:user_id', WishlistController.createWishlist);

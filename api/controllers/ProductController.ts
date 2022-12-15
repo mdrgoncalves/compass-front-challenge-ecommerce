@@ -82,6 +82,58 @@ class ProductController {
                 json({ message: 'Products not found' });
         }
     }
+
+    static async getProductsByCategoryAndPage(req: Request, res: Response) {
+
+        const { category, page, limit } = req.params;
+        const limitQuery = Number(limit);
+        const skip = (Number(page) - 1) * limitQuery;
+
+        try {
+            const foundProducts = await product.find
+                ({ productCategory: category })
+                .limit(limitQuery).skip(skip);
+            return res.status(200).json(foundProducts);
+        } catch (error) {
+            return res.status(404).
+                json({ message: 'Products not found' });
+        }
+    }
+
+    static async getProductsByCategoryAndPageSortedByName(req: Request, res: Response) {
+
+        const { category, page, limit, sort } = req.params;
+        const limitQuery = Number(limit);
+        const skip = (Number(page) - 1) * limitQuery;
+
+        try {
+            const foundProducts = await product.find
+                ({ productCategory: category })
+                .limit(limitQuery).skip(skip).sort({ productName: 1 });
+            return res.status(200).json(foundProducts);
+        } catch (error) {
+            return res.status(404).
+                json({ message: 'Products not found' });
+        }
+    }
+
+    static async getProductsByCategoryAndPageSortedByPrice(req: Request, res: Response) {
+
+        const { category, page, limit, sort } = req.params;
+        const limitQuery = Number(limit);
+        const skip = (Number(page) - 1) * limitQuery;
+
+        try {
+            const foundProducts = await product.find
+                ({ productCategory: category })
+                .limit(limitQuery).skip(skip).sort({ productPrice: 1 });
+            return res.status(200).json(foundProducts);
+        } catch (error) {
+            return res.status(404).
+                json({ message: 'Products not found' });
+        }
+    }
 }
 
 export default ProductController;
+
