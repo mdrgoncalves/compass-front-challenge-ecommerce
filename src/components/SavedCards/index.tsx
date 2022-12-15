@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { UserState } from "../../context/UserContex";
-import { CardItem } from "./styles";
+import { CardItem, CardWrapper } from "./styles";
 
 interface IPayment {
     _id: string;
@@ -21,7 +21,7 @@ export const SavedCards: React.FC = () => {
     
     return (
         
-        <>
+        <CardWrapper>
         {Object.keys(payment).map((key) => {
                 return (
                     <CardItem key={payment[key]._id}>
@@ -31,6 +31,6 @@ export const SavedCards: React.FC = () => {
                     </CardItem>
                 )
             })}
-        </>
+        </CardWrapper>
     );  
 };
