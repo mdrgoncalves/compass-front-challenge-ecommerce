@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { CouponState } from "../../context/CouponContext";
 import { useWidth } from "../../utils/useWidth";
 import { Carousel } from "../Carousel";
 import { CopomCard } from "../CopomCard";
@@ -21,6 +23,12 @@ interface ProductDescProps {
     productId: string;
 }
 
+interface ICoupon {
+    _id: string;
+    description: string;
+    code: string;
+}
+
 export const ProductDesc: React.FC<ProductDescProps> = ({
     name,
     description,
@@ -28,6 +36,12 @@ export const ProductDesc: React.FC<ProductDescProps> = ({
     productId
 }) => {
 
+    const { getCoupons, coupons } = CouponState();
+
+    useEffect(() => {
+        getCoupons();
+    }, []);
+    
     return (
         
         <>
@@ -57,9 +71,14 @@ export const ProductDesc: React.FC<ProductDescProps> = ({
         {useWidth({
             renderMobile: () => (
                 <Carousel>
-                    <CopomCard />
-                    <CopomCard />
-                    <CopomCard />
+                    {coupons.map((coupon: ICoupon) => (
+                            <CopomCard
+                                key={coupon._id}
+                                description={coupon.description}
+                                code={coupon.code}
+                            />
+                        ))
+                    }
                 </Carousel>
             ),
             renderDesktop: () => (
@@ -73,9 +92,14 @@ export const ProductDesc: React.FC<ProductDescProps> = ({
             ),
             renderDesktop: () => (
                 <Carousel>
-                    <CopomCard />
-                    <CopomCard />
-                    <CopomCard />
+                    {coupons.map((coupon: ICoupon) => (
+                            <CopomCard
+                                key={coupon._id}
+                                description={coupon.description}
+                                code={coupon.code}
+                            />
+                        ))
+                    }
                 </Carousel>
             )
         })}
