@@ -7,7 +7,7 @@ export default {
     component: CopomCard,
 } as ComponentMeta<typeof CopomCard>;
 
-const Template: ComponentStory<typeof CopomCard> = () => <CopomCard />
+const Template: ComponentStory<typeof CopomCard> = () => <CopomCard description='Lorem Ipsum' code='ORDER1' />
 
 export const Default = Template.bind({});
 Default.args = {};
