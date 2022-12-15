@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 export const AddressWrapper = styled.main`
 
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 
     h2 {
         font-size: 1rem;
@@ -15,9 +15,10 @@ export const AddressWrapper = styled.main`
     }
 
     @media screen and (min-width: 985px) {
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 2.5rem;
+        flex-direction: row;
+        flex-wrap: wrap;
         margin-top: 1rem;
+        height: max-content;
     }
 `;
 
