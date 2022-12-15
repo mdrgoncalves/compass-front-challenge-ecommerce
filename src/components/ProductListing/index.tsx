@@ -19,12 +19,25 @@ export const ProductListing: React.FC = () => {
     const [productsPerPage, setProductsPerPage] = useState(9);
 
     // Get Products List according to Category
-    const { getProductsByCategory, categoryProducts } = ProductState();
-    const productsList = categoryProducts;
+    const { 
+        getProductsByCategory, 
+        categoryProducts,
+        getProductsByCategoryAndPage,
+        getProductsByCategoryAndPageSortedByName,
+        getProductsByCategoryAndPageSortedByPrice,
+        paginateProducts
+    } = ProductState();
+
+    const productsList = paginateProducts;
     
     useEffect(() => {
         getProductsByCategory(category);
+        getProductsByCategoryAndPage(category, currentPage, productsPerPage);
     }, [category]);
+
+    useEffect(() => {
+        getProductsByCategoryAndPage(category, currentPage, productsPerPage);
+    }, [currentPage, productsPerPage]);
 
     // Define list according to sort
     const [sortState, setSortState] = useState('position');
@@ -32,16 +45,16 @@ export const ProductListing: React.FC = () => {
     useEffect(() => {
         switch (sortState) {
             case 'price': 
-                productsList.sort((a: IProduct, b: IProduct) => a.productPrice - b.productPrice);
+                getProductsByCategoryAndPageSortedByPrice(category, currentPage, productsPerPage);
                 break;
             case 'name':
-                productsList.sort((a: IProduct, b: IProduct) => a.productName.localeCompare(b.productName));
+                getProductsByCategoryAndPageSortedByName(category, currentPage, productsPerPage);
                 break;
             case 'position':
-                productsList.sort((a: IProduct, b: IProduct) => a._id.localeCompare(b._id));
+                getProductsByCategoryAndPage(category, currentPage, productsPerPage);
                 break;
         }
-    }, [sortState]);
+    }, [sortState, category]);
 
     // Get Current Product
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -49,13 +62,13 @@ export const ProductListing: React.FC = () => {
     const [currentProducts, setCurrentProducts] = useState([])
 
     useEffect(() => {
-        setCurrentProducts(productsList.slice(indexOfFirstProduct, indexOfLastProduct));
+        setCurrentProducts(productsList);
     }, [currentPage, productsPerPage, productsList, indexOfFirstProduct, indexOfLastProduct, sortState]);
 
     // Change Page
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
     const nextPage = () => {
-        if (currentPage < productsList.length / productsPerPage) {
+        if (currentPage < categoryProducts.length / productsPerPage) {
             setCurrentPage(currentPage + 1);
         } else {
             setCurrentPage(1);
@@ -140,7 +153,7 @@ export const ProductListing: React.FC = () => {
                     </ProductsGrid>
                     <Pagination
                         productsPerPage={productsPerPage}
-                        totalProducts={productsList.length}
+                        totalProducts={categoryProducts.length}
                         paginate={paginate}
                         nextPage={nextPage}
                         activePage={currentPage}
