@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { PageHeader } from "../../components/Desktop/PageHeader";
 import { ProfileTabs } from "../../components/Desktop/ProfileTabs";
@@ -27,6 +27,9 @@ export const Profile: React.FC = () => {
 
     const [locationControl, setLocationControl] = useState(true);
     const [headingTitle, setHeadingTitle] = useState('');
+    const [insideOrder, setInsideOrder] = useState(false);
+
+    const { orderId } = useParams();
 
     useEffect(() => {
         if (location.pathname !== '/profile') {
@@ -35,6 +38,14 @@ export const Profile: React.FC = () => {
 
         const pathname = '/' + location.pathname.split('/').slice(1).join('/');
         setHeadingTitle(getKeyByValue(nav, pathname)!);
+
+        if (pathname.includes('/profile/orders/6')) {
+            setHeadingTitle(`Order#${orderId?.slice(0, 9)}`);
+            setInsideOrder(true);
+        } else {
+            setInsideOrder(false);
+        }
+
     }, [location.pathname]);
 
     const getKeyByValue = (object: any, value: any) => {
@@ -89,11 +100,26 @@ export const Profile: React.FC = () => {
             renderDesktop: () => (
                 <ProfileContainer>
                     <FlexWrapper justify>
+                        {insideOrder ? (
+                        <PageHeader
+                        title={headingTitle}
+                        paths={[
+                            'profile',
+                            'My Orders',
+                            headingTitle.charAt(0).toUpperCase() + headingTitle.slice(1)
+                        ]}
+                        titleMargin='0'
+                        />
+                        ) : (
                         <PageHeader
                             title={headingTitle}
-                            paths={['User Profile']}
+                            paths={[
+                                'profile',
+                                headingTitle.charAt(0).toUpperCase() + headingTitle.slice(1)
+                            ]}
                             titleMargin='0'
                         />
+                        )}
                         <ButtonWrapper>
                             <Button
                                 color='secondary'
