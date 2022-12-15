@@ -92,7 +92,7 @@ export const ProductListing: React.FC = () => {
                     totalProducts={productsList.length}
                 />
                 <ProductsGrid>
-                    {productsList.map((product: IProduct) => {
+                    {categoryProducts.map((product: IProduct) => {
                         const { 
                             _id, 
                             productName, 
