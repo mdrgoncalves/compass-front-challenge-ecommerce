@@ -35,7 +35,14 @@ export const Checkout: React.FC = () => {
     const navigate = useNavigate();
 
     const { userId, createPayment, createOrder } = UserState();
-    const { state: { bag }, grandTotal } = BagState();
+    const {
+        state: { bag },
+        subTotal,
+        itemQuantity,  
+        grandTotal,
+        discount,
+        dispatch
+    } = BagState();
     
     let paymentId: string;
 
@@ -43,12 +50,14 @@ export const Checkout: React.FC = () => {
         
         const id = new mongoose.Types.ObjectId();
         paymentId = id.toString();
+        const finalNumbers = String(cardNumber).slice(-2);
 
         const payment = {
             "_id": id,
             "cardNumber": cardNumber,
             "expirationDate": cardDate,
             "cvc": cardCvv,
+            "finalNumbers": finalNumbers,
             "user": userId
         }
 
@@ -72,12 +81,16 @@ export const Checkout: React.FC = () => {
                         "price": product.productPrice
                     }
                 }),
-            "totalPrice": grandTotal,
+            "subTotal": subTotal,
+            "discount": discount,
+            "deliveryFee": itemQuantity,
+            "grandTotal": grandTotal,
             "date": date,
-            "status": 'paid'
+            "status": 'processing'
         }
 
         createOrder(order);
+        dispatch({ type: 'CLEAR_BAG' });
     }
 
     const clickHandler = () => {
@@ -89,7 +102,7 @@ export const Checkout: React.FC = () => {
         if (actived) {
             postPayment();
             postOrder();
-            navigate('/confirmed');
+            navigate('/confirmed', { replace: true });
             setActived(false);
         }
     }, [addressId]);
