@@ -22,6 +22,7 @@ import { BagState } from "../../context/BagContext";
 import { IProduct } from "../../types/Products";
 import { useWidth } from "../../utils/useWidth";
 import { MobileHeading } from "../../components/Mobile/MobileHeading";
+import { CouponState } from "../../context/CouponContext";
 
 export const Checkout: React.FC = () => {
 
@@ -35,6 +36,8 @@ export const Checkout: React.FC = () => {
     const navigate = useNavigate();
 
     const { userId, createPayment, createOrder } = UserState();
+    const { desactivateCoupon } = CouponState()
+
     const {
         state: { bag },
         subTotal,
@@ -91,6 +94,7 @@ export const Checkout: React.FC = () => {
 
         createOrder(order);
         dispatch({ type: 'CLEAR_BAG' });
+        desactivateCoupon();
     }
 
     const clickHandler = () => {

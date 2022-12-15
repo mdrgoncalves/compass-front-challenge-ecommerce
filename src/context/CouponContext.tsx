@@ -19,6 +19,15 @@ const CouponProvider = ({ children }: any) => {
         }
     }
 
+    // Desactivate coupon
+    const desactivateCoupon = async () => {
+        try {
+            await api.put(`/coupons/${couponId}/desactivate`);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
         <CouponContext.Provider value={{
             getCoupons,
@@ -26,7 +35,8 @@ const CouponProvider = ({ children }: any) => {
             setDiscountPercent,
             discountPercent,
             setCouponId,
-            couponId
+            couponId,
+            desactivateCoupon
         }}>
             {children}
         </CouponContext.Provider>
