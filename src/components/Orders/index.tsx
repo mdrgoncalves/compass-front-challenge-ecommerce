@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { UserState } from "../../context/UserContex";
-import { useWidth } from "../../utils/useWidth";
 import { ProductTabs } from "../Desktop/ProductTabs";
 import { OrderList } from "./OrderList";
 

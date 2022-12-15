@@ -73,9 +73,9 @@ export const OrderItem: React.FC<OrderItemProps> = ({
                 <ButtonWrapper>
                     <Button
                         color='secondary'
-                        onClick={() => updateHandler('processing')}
+                        onClick={() => updateHandler('paid')}
                     >
-                        Processing
+                        Paid
                     </Button>
                     <Button
                         color='remove'

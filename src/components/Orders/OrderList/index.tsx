@@ -25,7 +25,7 @@ export const OrderList: React.FC<OrderListProps> = ({
                             key={order._id}
                             id={order._id}
                             date={order.date}
-                            price={order.totalPrice}
+                            price={order.grandTotal}
                             status={order.status}
                         />
                     ))

@@ -58,10 +58,10 @@ export const Order: React.FC = () => {
                                 />
                             </ProductList>
                             <OrderInformation 
-                                subTotal={order.totalPrice}
-                                discount={0}
-                                deliveryFee={0}
-                                grandTotal={0}
+                                subTotal={order.subTotal}
+                                discount={order.discount}
+                                deliveryFee={order.deliveryFee}
+                                grandTotal={order.grandTotal}
                                 fullName={address ? address.fullName : ''}
                                 street={address ? address.street : ''}
                                 city={address ? address.city : ''}
