@@ -7,6 +7,7 @@ const ProductProvider = ({ children }: any) => {
 
     const [products, setProducts] = useState([]);
     const [categoryProducts, setCategoryProducts] = useState([]);
+    const [paginateProducts, setPaginateProducts] = useState([]);
     const [product, setProduct] = useState({});
     const [productReviews, setProductReviews] = useState([]);
     
@@ -38,6 +39,54 @@ const ProductProvider = ({ children }: any) => {
         try {
             const { data } = await api.get(`/products/category/${category}`);
             setCategoryProducts(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Get Products by Category and Page
+    const getProductsByCategoryAndPage = async (
+        category: string, 
+        page: number,
+        limit: number
+    ) => {
+
+        try {
+            const { data } = await api
+                .get(`/products/category/${category}/page/${page}/limit/${limit}`);
+            setPaginateProducts(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Get products by Category and Page sorted by Name
+    const getProductsByCategoryAndPageSortedByName = async (
+        category: string,
+        page: number,
+        limit: number
+    ) => {
+        
+        try {
+            const { data } = await api
+                .get(`/products/category/${category}/page/${page}/limit/${limit}/sort/name`);
+            setPaginateProducts(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    // Get products by Category and Page sorted by Price
+    const getProductsByCategoryAndPageSortedByPrice = async (
+        category: string,
+        page: number,
+        limit: number
+    ) => {
+        
+        try {
+            const { data } = await api
+                .get(`/products/category/${category}/page/${page}/limit/${limit}/sort/price`);
+            setPaginateProducts(data);
         } catch (error) {
             console.error(error);
         }
@@ -83,6 +132,10 @@ const ProductProvider = ({ children }: any) => {
             product,
             getProductsByCategory,
             categoryProducts,
+            getProductsByCategoryAndPage,
+            getProductsByCategoryAndPageSortedByName,
+            getProductsByCategoryAndPageSortedByPrice,
+            paginateProducts,
             getRatingsByProduct,
             getRatingsByUser,
             productReviews,
