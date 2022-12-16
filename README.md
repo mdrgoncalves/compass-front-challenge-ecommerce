@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://i.ibb.co/0ZxP4RQ/Shopware-Cover-final.png" width="60%" />
+  <img src="https://i.ibb.co/0ZxP4RQ/Shopware-Cover-final.png" width="800px" />
 </p>
 
 ## 💻 About
@@ -25,6 +25,8 @@ Development of a complete responsive ecommerce site with pagination of products 
 
 Live Site URL: [Vercel](https://compass-front-challenge-ecommerce.vercel.app/)
 
+Live Backend: [Render](https://ecommerce-server-sz9l.onrender.com/)
+
 ---
 
 ## 🛠 Tech Stack
@@ -38,6 +40,8 @@ The following tools were used in the construction of the project:
 -   **[Typescript](https://www.typescriptlang.org/docs/)**
 -   **[ReactJS](https://reactjs.org/docs/getting-started.html)**
 -   **[Storybook](https://storybook.js.org/docs/html/get-started/introduction)**
+-   **[Axios](https://axios-http.com/docs/intro)**
+-   **[MongoDB Atlas](https://www.mongodb.com/atlas)**
 
 ---
 
