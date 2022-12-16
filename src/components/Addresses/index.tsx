@@ -18,7 +18,7 @@ export const Addresses: React.FC = () => {
             {(address?.length !== 0) ? (
             <AddressWrapper>
                 {Object.keys(address).map((key) => (
-                        <div>
+                        <div key={address[key]._id}>
                             <h2>Address {Number(key) + 1}</h2>
                             <AddressCard
                                 key={address[key]._id}
