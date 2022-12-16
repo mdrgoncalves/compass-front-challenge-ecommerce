@@ -22,4 +22,9 @@ export const AddressWrapper = styled.main`
     }
 `;
 
-export const AddressesEmpty = styled(WishlistEmpty)``;
+export const AddressesEmpty = styled(WishlistEmpty)`
+
+    @media screen and (min-width: 985px) {
+        margin: 0 auto;
+    }
+`;

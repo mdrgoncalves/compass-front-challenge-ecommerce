@@ -8,6 +8,7 @@ interface AddressCardProps {
     pincode: string;
     mobileNumber: string;
     withTitle?: boolean;
+    withBorder?: boolean;
 }
 
 export const AddressCard: React.FC<AddressCardProps> = ({
@@ -18,11 +19,14 @@ export const AddressCard: React.FC<AddressCardProps> = ({
     pincode,
     mobileNumber,
     withTitle = true,
+    withBorder = false
 }) => {
 
     return (
         
-        <ColumnFlex>
+        <ColumnFlex
+            withBorder={withBorder}
+        >
             {withTitle && <h3>Address Details</h3>}
             <p>{fullName}</p>
             <p>{street}</p>
