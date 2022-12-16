@@ -6,7 +6,8 @@ import { ButtonWrapper, FlexWrapper, ProfileIcon } from "./styles";
 export const IconChange: React.FC = () => {
 
     const [image, setImage] = useState<any>('');
-    const [imageChanged, setImageChanged] = useState(false);
+    const [imageTrigger, setImageTrigger] = useState<boolean>(false);
+
     const { updateUser, getUser, user } = UserState();
 
     const convertToBase64 = (file: any) => {
@@ -39,17 +40,17 @@ export const IconChange: React.FC = () => {
         }
 
         updateUser(data);
-        setImageChanged(!imageChanged);
+        setImageTrigger(!imageTrigger);
     }
 
-    const deleteHandler = () => {
-        
+    const deleteImage = () => {
+
         const data = {
             "image": ''
         }
 
         updateUser(data);
-        setImageChanged(!imageChanged);
+        setImageTrigger(!imageTrigger);
     }
 
     useEffect(() => {
@@ -61,15 +62,15 @@ export const IconChange: React.FC = () => {
 
     useEffect(() => {
         getUser();
-    }, [imageChanged]);
+    }, [imageTrigger, user, user?.image]);
     
     return (
         
         <FlexWrapper>
             <ProfileIcon 
                 src={
-                    user.image
-                    ? user.image
+                    user?.image
+                    ? user?.image
                     : '/assets/img/icons/profile-placeholder-icon.png'
                 }
                 alt='profile icon' 
@@ -87,7 +88,7 @@ export const IconChange: React.FC = () => {
                 <Button
                     color='remove'
                     iconType='cross'
-                    onClick={deleteHandler}
+                    onClick={deleteImage}
                 >
                     Delete
                 </Button>
