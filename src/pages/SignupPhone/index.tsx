@@ -20,8 +20,11 @@ export const SignupPhone: React.FC = () => {
     }, [ddd, phone]);
 
     const clickHandler = () => {
+
         if (phoneNumber === '110986757684968') {
             navigate('/signup-otp', { state: phoneNumber });
+        } else {
+            alert(`Invalid phone number! \nTry: 11 0986757684968`);
         }
     };
 

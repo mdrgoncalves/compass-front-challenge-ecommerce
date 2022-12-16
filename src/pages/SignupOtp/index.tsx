@@ -25,13 +25,15 @@ export const SignupOtp: React.FC = () => {
 
     const clickHandler = () => {
         if (code === '8521') {
-            navigate('/profile', {replace: true});
+            navigate('/profile/information', {replace: true});
             createUser(
                 {
                     "mobileNumber": location.state
                 }
             );
             alert('Success!');
+        } else {
+            alert(`Invalid code! \nTry: 8521`);
         }
     };
 
