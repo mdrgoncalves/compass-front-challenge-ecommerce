@@ -24,7 +24,7 @@ export const SignupOtp: React.FC = () => {
     }, [firstNumber, secondNumber, thirdNumber, fourthNumber]);
 
     const clickHandler = () => {
-        if (code === '8521') {
+        if (code === '1234') {
             navigate('/profile/information', {replace: true});
             createUser(
                 {
@@ -51,22 +51,22 @@ export const SignupOtp: React.FC = () => {
                     <InputNumber
                         setNumber={setFirstNumber}
                         number={firstNumber}
-                        placeholder='8'
+                        placeholder='1'
                     />
                     <InputNumber
                         setNumber={setSecondNumber}
                         number={secondNumber}
-                        placeholder='5'
+                        placeholder='2'
                     />
                     <InputNumber
                         setNumber={setThirdNumber}
                         number={thirdNumber}
-                        placeholder='2'
+                        placeholder='3'
                     />
                     <InputNumber
                         setNumber={setFourthNumber}
                         number={fourthNumber}
-                        placeholder='1'
+                        placeholder='4'
                     />
                 </InputWrapper>
             </OtpContent>
