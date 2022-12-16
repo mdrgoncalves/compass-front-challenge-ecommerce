@@ -27,7 +27,7 @@ export const Reviews: React.FC = () => {
     return (
         
         <>
-            {productReviews ? (
+            {(productReviews?.length !== 0) ? (
             <ReviewsWrapper>
                 <h2>My Reviews</h2>
                 {productReviews.map((review: IReview) => {
@@ -46,7 +46,7 @@ export const Reviews: React.FC = () => {
                 })}
             </ReviewsWrapper>
             ) : (
-                <EmptyText>You have not reviewed any products yet.</EmptyText>
+                <EmptyText>You haven't reviewed any products yet.</EmptyText>
             )}
         </>
     );  

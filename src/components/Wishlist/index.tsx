@@ -17,13 +17,15 @@ export const Wishlist: React.FC = () => {
         getWishlist();
         if (wishlist) {
             setProducts(wishlist.products);
+        } else {
+            setProducts([]);
         }
     }, [wishlist]);
 
     return (
         
         <Container>
-            {wishlist ?
+            {(products?.length !== 0) ?
             <>
             <Title>My Wishlist</Title>
             <ProductsTotal>{products?.length} product(s)</ProductsTotal>

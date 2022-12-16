@@ -54,6 +54,7 @@ export const WishlistEmpty = styled.div`
 
     h3 {
         ${font.titleMedium};
+        width: 300px;
     }
 
     button {
