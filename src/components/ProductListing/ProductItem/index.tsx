@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { IProduct } from "../../../types/Products";
 import { AddToBagButton } from "../../AddToBagButton";
 import { AddToWishlistButton } from "../../AddToWishlistButton";
 import { 
@@ -21,6 +23,7 @@ interface ProductItemProps {
     desc: string;
     price: number;
     forWishlist?: boolean;
+    product?: IProduct;
 }
 
 export const ProductItem: React.FC<ProductItemProps> = ({
@@ -30,7 +33,8 @@ export const ProductItem: React.FC<ProductItemProps> = ({
     title,
     desc,
     price,
-    forWishlist = false
+    forWishlist = false,
+    product
 }) => {
 
     return (
@@ -52,7 +56,7 @@ export const ProductItem: React.FC<ProductItemProps> = ({
                         <span className='discount-price'>50% OFF</span>
                     </PricesContainer>
                     {forWishlist &&
-                        <AddToBagButton product={id} />
+                        <AddToBagButton product={product} />
                     }
                 </ProductTextContainer>
                 {forWishlist ? 

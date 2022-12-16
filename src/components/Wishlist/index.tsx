@@ -39,6 +39,7 @@ export const Wishlist: React.FC = () => {
                         title={product.productName}
                         desc={product.productDescription}
                         price={product.productPrice}
+                        product={product}
                         forWishlist={true}
                     />
                 ))}
