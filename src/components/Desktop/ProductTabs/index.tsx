@@ -10,6 +10,7 @@ interface ProductTabsProps {
     thirdTabChildren: React.ReactNode;
     setCurrentActiveTab?: React.Dispatch<React.SetStateAction<string>>;
     isNone?: boolean;
+    initialTab?: 'tab1' | 'tab2' | 'tab3' | string;
 }
 
 export const ProductTabs: React.FC<ProductTabsProps> = ({
@@ -20,10 +21,11 @@ export const ProductTabs: React.FC<ProductTabsProps> = ({
     secondTabChildren,
     thirdTabChildren,
     setCurrentActiveTab,
-    isNone
+    isNone,
+    initialTab = 'tab1'
 }) => {
 
-    const [activeTab, setActiveTab] = useState('tab1');
+    const [activeTab, setActiveTab] = useState(initialTab);
 
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);

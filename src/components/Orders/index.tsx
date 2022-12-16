@@ -9,7 +9,7 @@ export const Orders: React.FC = () => {
     const [currentActiveTab, setCurrentActiveTab] = useState('');
 
     useEffect(() => {
-        listOrdersByStatus('paid');
+        listOrdersByStatus('processing');
     }, []);
 
     useEffect(() => {
@@ -32,6 +32,7 @@ export const Orders: React.FC = () => {
             secondTabChildren={<OrderList orders={orders} />}
             thirdTabChildren={<OrderList orders={orders} />}
             setCurrentActiveTab = {setCurrentActiveTab} 
+            initialTab='tab2'
         />
     );  
 };
