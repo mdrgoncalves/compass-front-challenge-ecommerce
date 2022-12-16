@@ -52,6 +52,8 @@ export const ProfileForm: React.FC = () => {
         }
 
         updateUser(form);
+        alert('User updated successfully!');
+        window.scrollTo(0, 0);
     }
 
     return (
