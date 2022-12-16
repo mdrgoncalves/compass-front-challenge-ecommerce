@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { UserState } from "../../context/UserContex";
 import { useWidth } from "../../utils/useWidth";
+import { AddressCard } from "../AddressCard";
 import { BagDisplay } from "../BagDisplay";
 import { ProductTabs } from "../Desktop/ProductTabs";
 import { OrderInformation } from "./OrderInformation";
@@ -71,8 +72,35 @@ export const Order: React.FC = () => {
                             />
                         </OrderWrapper>
                     }
-                    secondTabChildren={<h2>Invoices</h2>}
-                    thirdTabChildren={<h2>Order Shipment</h2>}
+                    secondTabChildren={
+                        <OrderInformation 
+                            subTotal={order.subTotal}
+                            discount={order.discount}
+                            deliveryFee={order.deliveryFee}
+                            grandTotal={order.grandTotal}
+                            fullName={address ? address.fullName : ''}
+                            street={address ? address.street : ''}
+                            city={address ? address.city : ''}
+                            state={address ? address.state : ''}
+                            pincode={address ? address.pincode : ''}
+                            mobileNumber={address ? address.mobileNumber : ''}
+                        />
+                    }
+                    thirdTabChildren={
+                        <>
+                        <h2>Order Sent to:</h2>
+                        <AddressCard
+                            fullName={address ? address.fullName : ''}
+                            street={address ? address.street : ''}
+                            city={address ? address.city : ''}
+                            state={address ? address.state : ''}
+                            pincode={address ? address.pincode : ''}
+                            mobileNumber={address ? address.mobileNumber : ''}
+                            withTitle={false}
+                            withBorder={false}
+                        />
+                        </>
+                    }
                 />
                 </>
             ),
