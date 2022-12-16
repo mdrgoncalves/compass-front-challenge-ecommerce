@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <img src="https://i.ibb.co/0ZxP4RQ/Shopware-Cover-final.png" width="800px" />
+  <img src='https://i.ibb.co/8PSYRBL/Shopware-Cover-final.png' />
 </p>
 
 ## 💻 About
