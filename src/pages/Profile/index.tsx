@@ -37,7 +37,10 @@ export const Profile: React.FC = () => {
         }
 
         const pathname = '/' + location.pathname.split('/').slice(1).join('/');
-        setHeadingTitle(getKeyByValue(nav, pathname)!);
+        const path = getKeyByValue(nav, pathname);
+        if (path) {
+            setHeadingTitle(path.charAt(0).toUpperCase() + path.slice(1));
+        }
 
         if (pathname.includes('/profile/orders/6')) {
             setHeadingTitle(`Order#${orderId?.slice(0, 9)}`);
@@ -106,7 +109,7 @@ export const Profile: React.FC = () => {
                         paths={[
                             'profile',
                             'My Orders',
-                            headingTitle.charAt(0).toUpperCase() + headingTitle.slice(1)
+                            headingTitle
                         ]}
                         titleMargin='0'
                         />
@@ -115,7 +118,7 @@ export const Profile: React.FC = () => {
                             title={headingTitle}
                             paths={[
                                 'profile',
-                                headingTitle.charAt(0).toUpperCase() + headingTitle.slice(1)
+                                headingTitle
                             ]}
                             titleMargin='0'
                         />
