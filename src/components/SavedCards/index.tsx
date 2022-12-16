@@ -14,9 +14,9 @@ export const SavedCards: React.FC = () => {
     return (
         
         <>
-            {(payment?.lenght === 0) ? (
-            <CardWrapper>
-            {Object.keys(payment).map((key) => {
+            {(payment?.length !== 0) ? (
+                <CardWrapper>
+                {Object.keys(payment).map((key) => {
                     return (
                         <CardItem key={payment[key]._id}>
                             <h2>Card {Number(key) + 1}</h2>
@@ -25,7 +25,7 @@ export const SavedCards: React.FC = () => {
                         </CardItem>
                     )
                 })}
-            </CardWrapper>
+                </CardWrapper>
             ) : (
                 <EmptyText>You haven't added any cards yet.</EmptyText>
             )}
