@@ -77,6 +77,8 @@ const UserProvider = ({ children }: any) => {
     // Create or Update Wishlist
     const createOrUpdateWishlist = async (productId: string) => {
 
+        getWishlist();
+
         if (Object.keys(wishlist).length === 0) {
             const body = {
                 "products": [productId]
